@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/deng123-dev.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/deng123-dev.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/deng123-dev.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/deng123-dev.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/deng123-dev.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/deng123-dev.github.io/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/deng123-dev.github.io/lib/pace/pace-theme-minimal.min.css">
+  <script src="/deng123-dev.github.io/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/deng123-dev.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="创建一个HelloWorld项目实例代码： 步骤： 123· 添加@RestController注解· 创建HelloWorld方法· 返回字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot（2）">
+<meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/05/14/springboot%EF%BC%882%EF%BC%89/index.html">
+<meta property="og:site_name" content="邓钧元的个人博客">
+<meta property="og:description" content="创建一个HelloWorld项目实例代码： 步骤： 123· 添加@RestController注解· 创建HelloWorld方法· 返回字符串">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-89.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-92.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-106.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-91.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-93.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-94.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-95.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-103.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-98.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-107.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-99.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-102.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-108.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-105.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-109.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-112.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-114.png">
+<meta property="article:published_time" content="2020-05-14T05:45:23.000Z">
+<meta property="article:modified_time" content="2020-07-05T06:49:57.069Z">
+<meta property="article:author" content="邓钧元的个人博客">
+<meta property="article:tag" content="springboot">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/deng123-dev.github.io/images/pasted-89.png">
+
+<link rel="canonical" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/05/14/springboot%EF%BC%882%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>springboot（2） | 邓钧元的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/deng123-dev.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">邓钧元的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/deng123-dev.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/deng123-dev.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/deng123-dev.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/deng123-dev.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/deng123-dev.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/05/14/springboot%EF%BC%882%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/deng123-dev.github.io/images/avatar.gif">
+      <meta itemprop="name" content="邓钧元的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓钧元的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          springboot（2）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-14 13:45:23" itemprop="dateCreated datePublished" datetime="2020-05-14T13:45:23+08:00">2020-05-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-05 14:49:57" itemprop="dateModified" datetime="2020-07-05T14:49:57+08:00">2020-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/deng123-dev.github.io/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="创建一个HelloWorld项目"><a href="#创建一个HelloWorld项目" class="headerlink" title="创建一个HelloWorld项目"></a>创建一个HelloWorld项目</h1><p>实例代码：<br><img src="/deng123-dev.github.io/images/pasted-89.png" alt="upload successful"></p>
+<p>步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">· 添加@RestController注解</span><br><span class="line">· 创建HelloWorld方法</span><br><span class="line">· 返回字符串</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>测试结果：</p>
+<p><img src="/deng123-dev.github.io/images/pasted-92.png" alt="upload successful"></p>
+<h1 id="springboot在controller中常用注解"><a href="#springboot在controller中常用注解" class="headerlink" title="springboot在controller中常用注解"></a>springboot在controller中常用注解</h1><table>
+<thead>
+<tr>
+<th>注解名称</th>
+<th>注解解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@RestController</td>
+<td>@RestController注解相当于@ResponseBody ＋ @Controller合在起的作用。RestController使用的效果是将方法返回的对象直接在浏览器上展示成json格式。</td>
+</tr>
+<tr>
+<td>@GetMapping</td>
+<td>相当于@ GetMapping (method=RequestMethod.GET)的缩写</td>
+</tr>
+<tr>
+<td>@PostMapping</td>
+<td>相当于@ PostMapping (method=RequestMethod.POST)的缩写</td>
+</tr>
+<tr>
+<td>@PutMapping</td>
+<td>相当于@ PutMapping (method=RequestMethod.PUT)的缩写</td>
+</tr>
+<tr>
+<td>@DeleteMapping</td>
+<td>相当于@ DeleteMapping (method=RequestMethod.DELETE)的缩写</td>
+</tr>
+</tbody></table>
+<h1 id="springboot整合web层技术"><a href="#springboot整合web层技术" class="headerlink" title="springboot整合web层技术"></a>springboot整合web层技术</h1><h2 id="springboot整合Servlet"><a href="#springboot整合Servlet" class="headerlink" title="springboot整合Servlet"></a>springboot整合Servlet</h2><h3 id="什么是servlet"><a href="#什么是servlet" class="headerlink" title="什么是servlet"></a>什么是servlet</h3><p>　简单来说就是处理请求和发送响应的过程是由一种叫做Servlet的程序来完成的，而且   Servlet是为了解决动态页面产生的</p>
+<p><img src="/deng123-dev.github.io/images/pasted-106.png" alt="upload successful"></p>
+<p> springboot整合Servlet技术一共由两种方法，分别是：</p>
+<ol>
+<li><p>通过注解扫描完成Servlet组件的注册</p>
+</li>
+<li><p>通过方法完成Servlet组件的注册</p>
+</li>
+</ol>
+<h3 id="通过注解扫描完成Servlet组件的注册"><a href="#通过注解扫描完成Servlet组件的注册" class="headerlink" title="通过注解扫描完成Servlet组件的注册"></a>通过注解扫描完成Servlet组件的注册</h3><ol>
+<li>对servlet类的创建（如何进行整合，注意划蓝圈的地方）</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-91.png" alt="upload successful"></p>
+<p>步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">· 创建servlet包</span><br><span class="line">· 创建一个servlet类继承HttpServlet类</span><br><span class="line">· 重写doGet方法（拥有HttpServletRequest和HttpServletResponse两个参数）</span><br><span class="line">· 添加WebServlet注解（给name属性和urlPatterns属性赋值）</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>对启动类的修改 （如何进行整合，注意划蓝圈的地方）</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-93.png" alt="upload successful"></p>
+<p>步骤：</p>
+<p>   <code>添加@ServletComponentScan注解（因为它会自动扫描注解）</code></p>
+<ol start="3">
+<li>测试结果   </li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-94.png" alt="upload successful"></p>
+<h3 id="通过方法完成Servlet组件的注册"><a href="#通过方法完成Servlet组件的注册" class="headerlink" title="通过方法完成Servlet组件的注册"></a>通过方法完成Servlet组件的注册</h3><ol>
+<li>创建servlet类</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-95.png" alt="upload successful"></p>
+<p>步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">· 创建servlet包</span><br><span class="line">· 创建一个servlet类继承HttpServlet类</span><br><span class="line">· 重写doGet方法（拥有HttpServletRequest和HttpServletResponse两个参数）</span><br><span class="line">（其实步骤和注解扫描整合Servlet类一致，唯一不同就是不用添加注解）</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建servlet配置类</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-103.png" alt="upload successful"></p>
+<p>步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">· 创建config包</span><br><span class="line">· 添加@Configuration和@Bean注解</span><br><span class="line">· 实例化ServletRegistrationBean通过ServletRegistrationBean创造新对象bean</span><br><span class="line">· 配置bean的url</span><br><span class="line">· 返回bean</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>测试结果</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-98.png" alt="upload successful"></p>
+<h2 id="Springboot整合Filter"><a href="#Springboot整合Filter" class="headerlink" title="Springboot整合Filter"></a>Springboot整合Filter</h2><h3 id="什么是Filter"><a href="#什么是Filter" class="headerlink" title="什么是Filter"></a>什么是Filter</h3><p>Fliter过滤器实际上就是对web资源进行拦截，做一些处理后再交给下一个过滤器或servlet处理通常都是用来拦截request进行处理的，也可以对返回的response进行拦截处理<br><img src="/deng123-dev.github.io/images/pasted-107.png" alt="upload successful"></p>
+<p>和整合servlet一样，整合Filter也有两种方法：</p>
+<ol>
+<li><p>通过注解扫描完成Filter组件的注册</p>
+</li>
+<li><p>通过方法完成Filter组件的注册</p>
+</li>
+</ol>
+<h3 id="通过注解扫描完成Filter组件的注册"><a href="#通过注解扫描完成Filter组件的注册" class="headerlink" title="通过注解扫描完成Filter组件的注册"></a>通过注解扫描完成Filter组件的注册</h3><ol>
+<li>创建Filter类</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-99.png" alt="upload successful"></p>
+<p>步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">· 添加@WebFilter注解</span><br><span class="line">· 创建Filter包</span><br><span class="line">· 创建一个implements了Filter类的类</span><br><span class="line">· 添加doFilter，init和destroy等方法</span><br></pre></td></tr></table></figure>
+
+
+<ol start="2">
+<li>修改启动类</li>
+</ol>
+<p>步骤：<br><code>和WebServlet一样，都是添加@ServletComponentScan注解</code></p>
+<ol start="3">
+<li>测试结果</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-102.png" alt="upload successful"></p>
+<h3 id="通过方法完成Filter组件的注册"><a href="#通过方法完成Filter组件的注册" class="headerlink" title="通过方法完成Filter组件的注册"></a>通过方法完成Filter组件的注册</h3><ol>
+<li>创建Filter类</li>
+</ol>
+<p>步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">· 创建Filter包</span><br><span class="line">· 创建一个implements了Filter类的类</span><br><span class="line">· 添加doFilter，init和destroy等方法</span><br><span class="line">(其实和通过注解扫描完成Fliter的注册步骤一样，唯一的不同是不用添加注解)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建Filter配置类</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-108.png" alt="upload successful"></p>
+<p>步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">除开FilterRegistrationBean替代ServletRegistrationBean，</span><br><span class="line">其余和用方法配置servlet类的步骤一致，不做过多说明</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>测试结果</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-105.png" alt="upload successful"></p>
+<h2 id="Springboot整合Listener的方式"><a href="#Springboot整合Listener的方式" class="headerlink" title="Springboot整合Listener的方式"></a>Springboot整合Listener的方式</h2><h3 id="什么是Listener"><a href="#什么是Listener" class="headerlink" title="什么是Listener"></a>什么是Listener</h3><p>Listener（监听器）就是一个实现特定接口的普通java程序，这个程序专门用于监听另一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法将立即被执行。</p>
+<h3 id="通过注解扫描完成Listener组件注册"><a href="#通过注解扫描完成Listener组件注册" class="headerlink" title="通过注解扫描完成Listener组件注册"></a>通过注解扫描完成Listener组件注册</h3><ol>
+<li>创建Listener类</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-109.png" alt="upload successful"></p>
+<p>步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">·添加@WebListener注解</span><br><span class="line">·创建一个继承 ServletContextListener类的类</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改启动类</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">和WebServlet和WebFilter类一样，都是添加@ServletComponentScan注解</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过方法完成Listener组件注册"><a href="#通过方法完成Listener组件注册" class="headerlink" title="通过方法完成Listener组件注册"></a>通过方法完成Listener组件注册</h3><ol>
+<li>创建Listener类</li>
+</ol>
+<p>步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">和第一种用注解扫描创建的listener一致，(其实和通过注解扫描完成Listener的注册步骤一样，唯一的不同是不用添加注解) 不做过多描述</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建Listener配置类</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-112.png" alt="upload successful"></p>
+<p>步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">除开ListenerRegistrationBean替代ListenerRegistrationBean和不用配置bean.url</span><br><span class="line">其余和用方法配置servlet类的步骤一致，不做过多说明</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>测试结果 </li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-114.png" alt="upload successful"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/deng123-dev.github.io/tags/springboot/" rel="tag"># springboot</a>
+              <a href="/deng123-dev.github.io/tags/web/" rel="tag"># web</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2020/05/01/springboot%EF%BC%881%EF%BC%89/" rel="prev" title="springboot（1）">
+      <i class="fa fa-chevron-left"></i> springboot（1）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2020/05/31/springboot%EF%BC%883%EF%BC%89/" rel="next" title="springboot（3）">
+      springboot（3） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建一个HelloWorld项目"><span class="nav-number">1.</span> <span class="nav-text">创建一个HelloWorld项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#springboot在controller中常用注解"><span class="nav-number">2.</span> <span class="nav-text">springboot在controller中常用注解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#springboot整合web层技术"><span class="nav-number">3.</span> <span class="nav-text">springboot整合web层技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot整合Servlet"><span class="nav-number">3.1.</span> <span class="nav-text">springboot整合Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是servlet"><span class="nav-number">3.1.1.</span> <span class="nav-text">什么是servlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过注解扫描完成Servlet组件的注册"><span class="nav-number">3.1.2.</span> <span class="nav-text">通过注解扫描完成Servlet组件的注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过方法完成Servlet组件的注册"><span class="nav-number">3.1.3.</span> <span class="nav-text">通过方法完成Servlet组件的注册</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Springboot整合Filter"><span class="nav-number">3.2.</span> <span class="nav-text">Springboot整合Filter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Filter"><span class="nav-number">3.2.1.</span> <span class="nav-text">什么是Filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过注解扫描完成Filter组件的注册"><span class="nav-number">3.2.2.</span> <span class="nav-text">通过注解扫描完成Filter组件的注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过方法完成Filter组件的注册"><span class="nav-number">3.2.3.</span> <span class="nav-text">通过方法完成Filter组件的注册</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Springboot整合Listener的方式"><span class="nav-number">3.3.</span> <span class="nav-text">Springboot整合Listener的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Listener"><span class="nav-number">3.3.1.</span> <span class="nav-text">什么是Listener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过注解扫描完成Listener组件注册"><span class="nav-number">3.3.2.</span> <span class="nav-text">通过注解扫描完成Listener组件注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过方法完成Listener组件注册"><span class="nav-number">3.3.3.</span> <span class="nav-text">通过方法完成Listener组件注册</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">邓钧元的个人博客</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/deng123-dev.github.io/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/deng123-dev.github.io/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/deng123-dev.github.io/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">邓钧元的个人博客</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/deng123-dev.github.io/lib/anime.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/deng123-dev.github.io/js/utils.js"></script>
+
+<script src="/deng123-dev.github.io/js/motion.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/deng123-dev.github.io/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/deng123-dev.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/deng123-dev.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/deng123-dev.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/deng123-dev.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/deng123-dev.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/deng123-dev.github.io/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/deng123-dev.github.io/lib/pace/pace-theme-minimal.min.css">
+  <script src="/deng123-dev.github.io/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/deng123-dev.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="HTTP(超文本传输协议) HTTP是基于C&#x2F;S架构的应用层协议，请求通常是由 浏览器这样的客户端发起的，有web 服务器进行处理 客户端和服务器通过交换各自的信息进行交互。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web基础（2）">
+<meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/04/04/web%E5%9F%BA%E7%A1%80%EF%BC%882%EF%BC%89/index.html">
+<meta property="og:site_name" content="邓钧元的个人博客">
+<meta property="og:description" content="HTTP(超文本传输协议) HTTP是基于C&#x2F;S架构的应用层协议，请求通常是由 浏览器这样的客户端发起的，有web 服务器进行处理 客户端和服务器通过交换各自的信息进行交互。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-68.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-69.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-70.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-71.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-72.png">
+<meta property="article:published_time" content="2020-04-04T04:43:36.000Z">
+<meta property="article:modified_time" content="2020-07-05T06:49:19.155Z">
+<meta property="article:author" content="邓钧元的个人博客">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/deng123-dev.github.io/images/pasted-68.png">
+
+<link rel="canonical" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/04/04/web%E5%9F%BA%E7%A1%80%EF%BC%882%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>web基础（2） | 邓钧元的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/deng123-dev.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">邓钧元的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/deng123-dev.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/deng123-dev.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/deng123-dev.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/deng123-dev.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/deng123-dev.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/04/04/web%E5%9F%BA%E7%A1%80%EF%BC%882%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/deng123-dev.github.io/images/avatar.gif">
+      <meta itemprop="name" content="邓钧元的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓钧元的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          web基础（2）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-04 12:43:36" itemprop="dateCreated datePublished" datetime="2020-04-04T12:43:36+08:00">2020-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-05 14:49:19" itemprop="dateModified" datetime="2020-07-05T14:49:19+08:00">2020-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/deng123-dev.github.io/categories/web/" itemprop="url" rel="index"><span itemprop="name">web</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="HTTP-超文本传输协议"><a href="#HTTP-超文本传输协议" class="headerlink" title="HTTP(超文本传输协议)"></a>HTTP(超文本传输协议)</h1><p> HTTP是基于<strong>C/S架构</strong>的<strong>应用层</strong>协议，请求通常是由 浏览器这样的客户端发起的，有web 服务器进行处理<br> 客户端和服务器通过交换各自的信息进行交互。<br> <a id="more"></a></p>
+<ul>
+<li>默认端口为<strong>80</strong></li>
+<li>由像浏览器这样的客户端发出的消息叫做request </li>
+<li>被服务器响应的消息叫做responses</li>
+<li>无状态性：每次请求都是相互独立的</li>
+</ul>
+<h2 id="HTTP-request"><a href="#HTTP-request" class="headerlink" title="HTTP:request"></a>HTTP:request</h2><p>对于browser请求页面的流程：</p>
+<ul>
+<li>与服务器建立TCP连接；</li>
+<li>发送HTTP请求；</li>
+<li>收取HTTP响应，然后把网页在浏览器中显示出来。</li>
+</ul>
+<h3 id="请求格式"><a href="#请求格式" class="headerlink" title="请求格式"></a>请求格式</h3><p><img src="/deng123-dev.github.io/images/pasted-68.png" alt="upload successful"></p>
+<h4 id="请求行和请求头部"><a href="#请求行和请求头部" class="headerlink" title="请求行和请求头部"></a>请求行和请求头部</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F; HTTP&#x2F;1.1</span><br><span class="line">Host: www.sina.com.cn</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 xxx</span><br><span class="line">Accept: *&#x2F;*</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9,en-US;q&#x3D;0.8</span><br></pre></td></tr></table></figure>
+<ul>
+<li>请求行解释</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>表示使用获取路径为/的资源</td>
+</tr>
+<tr>
+<td>HTTP/1.1</td>
+<td>表示使用的是HTTP  1.1的协议</td>
+</tr>
+</tbody></table>
+<ul>
+<li>请求头解释</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HOST</td>
+<td>表示请求的主机名,表示浏览器正在请求的域名</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>表示客户端本身，例如浏览器的表示</td>
+</tr>
+<tr>
+<td>Accept</td>
+<td>表示浏览器能接收的数据类型，如text/<em>，images/</em></td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td>表示浏览器偏好的语言</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>表示浏览器可以支持的压缩类型，例如gzip, deflate, br</td>
+</tr>
+</tbody></table>
+<h4 id="请求数据"><a href="#请求数据" class="headerlink" title="请求数据"></a>请求数据</h4><p>因为<strong>get通过URL传送数据</strong>，而<strong>post通过请求数据体传送数据</strong>，所以一般情况下get方法中不体现请求数据（<strong>当然也可以将请求数据放在get中的请求数据体中使其体现</strong>）</p>
+<h3 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h3><p>请求参数的两种方式：</p>
+<ol>
+<li>URL（GET请求）：</li>
+</ol>
+<p>格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浏览器？参数名&#x3D;参数值&amp;参数二&#x3D;参数值</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<ol start="2">
+<li>request body（POST请求）</li>
+</ol>
+<p>通过request body传递参数</p>
+<ol start="3">
+<li><p>参数格式：</p>
+<ul>
+<li><p>多个参数用&amp;隔开</p>
+</li>
+<li><p>参数以键值对的方式出现</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="HTTP缓存"><a href="#HTTP缓存" class="headerlink" title="HTTP缓存"></a>HTTP缓存</h3><p>缓存是一种保存资源副本并在下次请求时直接使用该副本的技术。当 web 缓存发现请求的资源已经被存储，它会拦截请求，返回该资源的拷贝，而不会去源服务器重新下载</p>
+<p> 好处：</p>
+<ul>
+<li>缓解服务器端压力</li>
+<li>提升性能(获取资源的耗时更短了)</li>
+</ul>
+<p>（关于缓存的内容确实少的可怜，其中一个重要原因在于我对缓存的了解太少，望各位大佬指教）</p>
+<h3 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h3><table>
+<thead>
+<tr>
+<th>动词名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>从服务器取出资源（单个或多个）。</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>在服务器新建资源。</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>在服务器更新资源（客户端提供改变后的完整资源）。</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>在服务器更新(属性)资源（客户端提供改变的属性，比如说某个字段+1）。</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>从服务器删除资源。</td>
+</tr>
+</tbody></table>
+<p>还有两个不常用的HTTP动词：</p>
+<table>
+<thead>
+<tr>
+<th>动词名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HEAD</td>
+<td>获取资源的元数据。</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>获取信息，关于资源的哪些属性是客户端可以改变的。</td>
+</tr>
+</tbody></table>
+<h3 id="Get和Post的区别"><a href="#Get和Post的区别" class="headerlink" title="Get和Post的区别"></a>Get和Post的区别</h3><ul>
+<li>Get：从服务器上面获取数据</li>
+<li>post: 向服务器传输数据</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>GET</th>
+<th>POST</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>后退按钮/刷新</td>
+<td>无害</td>
+<td>数据会被重新提交（浏览器应该告知用户数据会被重新提交）。</td>
+</tr>
+<tr>
+<td>书签</td>
+<td>可收藏为书签</td>
+<td>不可收藏为书签</td>
+</tr>
+<tr>
+<td>缓存</td>
+<td>能被缓存</td>
+<td>不能缓存</td>
+</tr>
+<tr>
+<td>传参数方式</td>
+<td>用URL传参数</td>
+<td>用body传参数</td>
+</tr>
+<tr>
+<td>历史</td>
+<td>参数保留在浏览器历史中。</td>
+<td>参数不会保存在浏览器历史中。</td>
+</tr>
+<tr>
+<td>对数据长度的限制</td>
+<td>是的。当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。</td>
+<td>无限制。</td>
+</tr>
+<tr>
+<td>对数据类型的限制</td>
+<td>只允许 ASCII 字符。</td>
+<td>没有限制。也允许二进制数据。</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！</td>
+<td>POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</td>
+</tr>
+<tr>
+<td>可见性</td>
+<td>数据在 URL 中对所有人都是可见的。</td>
+<td>数据不会显示在 URL 中。</td>
+</tr>
+</tbody></table>
+<h3 id="发送post请求"><a href="#发送post请求" class="headerlink" title="发送post请求"></a>发送post请求</h3><p>三种发送post请求的方法：</p>
+<ul>
+<li><p>浏览器默认使用get请求</p>
+</li>
+<li><p>线上的默认工具发送 post请求</p>
+</li>
+<li><p>HTML from中可以指定get或post请求</p>
+</li>
+</ul>
+<p><em>form中的post请求</em>：</p>
+<pre><code>&lt;form action=&quot;https://www.baidu.com&quot; method=&quot;post&quot;&gt;
+          &lt;p&gt;用户名：&lt;input type=&quot;text&quot; name=&quot;name&quot;/&gt;&lt;/p&gt;
+          &lt;p&gt;密码：&lt;input type=&quot;password&quot; name=&quot;pwd&quot;/&gt;&lt;/p&gt;
+          &lt;input type=&quot;submit&quot; value=&quot;登录&quot;&gt;
+      &lt;/form&gt;    </code></pre><p> <em>展示的效果</em>：</p>
+ <form action="https://www.baidu.com" method="post">
+            <p>用户名：<input type="text" name="name"/></p>
+            <p>密码：<input type="password" name="pwd"/></p>
+            <input type="submit" value="登录">
+        </form>
+
+
+
+
+<h2 id="HTTP-response"><a href="#HTTP-response" class="headerlink" title="HTTP:response"></a>HTTP:response</h2><h3 id="reponse格式"><a href="#reponse格式" class="headerlink" title="reponse格式"></a>reponse格式</h3><p>HTTP响应也由三个部分组成，分别是：<strong>状态行、消息报头、响应正文</strong>。</p>
+<ul>
+<li><p>格式：</p>
+<p> ＜status-line＞</p>
+<p> ＜headers＞</p>
+<p> ＜blank line＞</p>
+<p> [＜response-body＞]</p>
+</li>
+<li><p>response和request的区别：</p>
+</li>
+</ul>
+<p><strong><em>response用状态字段代替了request请求信息</em></strong></p>
+<h3 id="reponse状态代码"><a href="#reponse状态代码" class="headerlink" title="reponse状态代码"></a>reponse状态代码</h3><ul>
+<li>首数字的状态响应码以及对应情况 </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>相应类别</th>
+<th>代表情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1xx</td>
+<td>指示信息–表示请求已接收，继续处理</td>
+</tr>
+<tr>
+<td>2xx</td>
+<td>成功–表示请求已被成功接收、理解、接受</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td>重定向–要完成请求必须进行更进一步的操作</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td>客户端错误–请求有语法错误或请求无法实现</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td>服务器端错误–服务器未能实现合法的请求</td>
+</tr>
+</tbody></table>
+<ul>
+<li>常见状态码以及对应情况</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>常见的状态代码</th>
+<th>表示的情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200 OK：</td>
+<td>客户端请求成功。</td>
+</tr>
+<tr>
+<td>301 Moved Permanently</td>
+<td>被请求的资源已永久移动到新位置</td>
+</tr>
+<tr>
+<td>302 Found</td>
+<td>要求客户端执行临时重定向</td>
+</tr>
+<tr>
+<td>400 Bad Request：</td>
+<td>客户端请求有语法错误，不能被服务器所理解。</td>
+</tr>
+<tr>
+<td>403 Forbidden：</td>
+<td>服务器收到请求，但是拒绝提供服务。</td>
+</tr>
+<tr>
+<td>404 Not Found：</td>
+<td>请求资源不存在，举个例子：输入了错误的URL。</td>
+</tr>
+<tr>
+<td>500 Internal Server Error：</td>
+<td>服务器发生不可预期的错误。</td>
+</tr>
+<tr>
+<td>503 Server Unavailable：</td>
+<td>服务器当前不能处理客户端的请求，一段时间后可能恢复正常，举个例子：HTTP/1.1 200 OK（CRLF）。</td>
+</tr>
+</tbody></table>
+<h1 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a>web服务器</h1><h2 id="web服务器概览"><a href="#web服务器概览" class="headerlink" title="web服务器概览"></a>web服务器概览</h2><p><img src="/deng123-dev.github.io/images/pasted-69.png" alt="upload successful"></p>
+<ul>
+<li><p>web服务器：</p>
+<ul>
+<li>web服务器软件是一个服务端软件 </li>
+<li>可以把静态网页部署到web服务器</li>
+<li>web服务器主要运行静态页面 </li>
+</ul>
+</li>
+<li><p>应用服务器：</p>
+<ul>
+<li>应用服务器可以运行动态页面</li>
+</ul>
+</li>
+<li><p>web服务器和应用服务器通常一起使用</p>
+</li>
+<li><p>Web服务器主要 是处理向浏览器发送HTML以供浏览，而应用程序服务器提供访问商业逻辑的途径以供客户端应用程序使用。</p>
+</li>
+</ul>
+<h2 id="常见的web服务器"><a href="#常见的web服务器" class="headerlink" title="常见的web服务器"></a>常见的web服务器</h2><ol>
+<li><p>Apache服务器<br><img src="/deng123-dev.github.io/images/pasted-70.png" alt="upload successful"><br>Apache仍然是世界上用得最多的Web服务器，优势主要在于源代码开放，可以运行在几乎所有的Unix, Windows. Linux系统平台上</p>
+</li>
+<li><p>Nginx服务器</p>
+</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-71.png" alt="upload successful"><br>只能运行在Linux/Unix，其特点是占有内存少，并发能力强</p>
+<ol start="3">
+<li>ISS服务器</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-72.png" alt="upload successful"><br>Microsoft的W eb服务器产品为Internet Information Server C IIS ) .  IIS是允许在公共Intranet或Internet上发布信息的Web服务器。IIS只能运行在Microsoft Windows平台</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/deng123-dev.github.io/tags/web/" rel="tag"># web</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2020/03/21/web%E5%9F%BA%E7%A1%80%EF%BC%881%EF%BC%89/" rel="prev" title="web基础（1）">
+      <i class="fa fa-chevron-left"></i> web基础（1）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2020/05/01/springboot%EF%BC%881%EF%BC%89/" rel="next" title="springboot（1）">
+      springboot（1） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-超文本传输协议"><span class="nav-number">1.</span> <span class="nav-text">HTTP(超文本传输协议)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-request"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP:request</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求格式"><span class="nav-number">1.1.1.</span> <span class="nav-text">请求格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#请求行和请求头部"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">请求行和请求头部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求数据"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">请求数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数"><span class="nav-number">1.1.2.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP缓存"><span class="nav-number">1.1.3.</span> <span class="nav-text">HTTP缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP动词"><span class="nav-number">1.1.4.</span> <span class="nav-text">HTTP动词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get和Post的区别"><span class="nav-number">1.1.5.</span> <span class="nav-text">Get和Post的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送post请求"><span class="nav-number">1.1.6.</span> <span class="nav-text">发送post请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-response"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP:response</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reponse格式"><span class="nav-number">1.2.1.</span> <span class="nav-text">reponse格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reponse状态代码"><span class="nav-number">1.2.2.</span> <span class="nav-text">reponse状态代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web服务器"><span class="nav-number">2.</span> <span class="nav-text">web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web服务器概览"><span class="nav-number">2.1.</span> <span class="nav-text">web服务器概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的web服务器"><span class="nav-number">2.2.</span> <span class="nav-text">常见的web服务器</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">邓钧元的个人博客</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/deng123-dev.github.io/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/deng123-dev.github.io/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/deng123-dev.github.io/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">邓钧元的个人博客</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/deng123-dev.github.io/lib/anime.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/deng123-dev.github.io/js/utils.js"></script>
+
+<script src="/deng123-dev.github.io/js/motion.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/deng123-dev.github.io/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

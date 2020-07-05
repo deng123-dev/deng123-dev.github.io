@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/deng123-dev.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/deng123-dev.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/deng123-dev.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/deng123-dev.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/deng123-dev.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/deng123-dev.github.io/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/deng123-dev.github.io/lib/pace/pace-theme-minimal.min.css">
+  <script src="/deng123-dev.github.io/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/deng123-dev.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="概叙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构：排序">
+<meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/02/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:site_name" content="邓钧元的个人博客">
+<meta property="og:description" content="概叙">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-49.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-10.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-33.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-35.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-36.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-37.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-38.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-39.png">
+<meta property="article:published_time" content="2020-02-04T12:37:10.000Z">
+<meta property="article:modified_time" content="2020-07-05T06:48:15.848Z">
+<meta property="article:author" content="邓钧元的个人博客">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/deng123-dev.github.io/images/pasted-49.png">
+
+<link rel="canonical" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/02/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E6%8E%92%E5%BA%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>数据结构：排序 | 邓钧元的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/deng123-dev.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">邓钧元的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/deng123-dev.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/deng123-dev.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/deng123-dev.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/deng123-dev.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/deng123-dev.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/02/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/deng123-dev.github.io/images/avatar.gif">
+      <meta itemprop="name" content="邓钧元的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓钧元的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构：排序
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-04 20:37:10" itemprop="dateCreated datePublished" datetime="2020-02-04T20:37:10+08:00">2020-02-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-05 14:48:15" itemprop="dateModified" datetime="2020-07-05T14:48:15+08:00">2020-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/deng123-dev.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="概叙"><a href="#概叙" class="headerlink" title="概叙"></a>概叙</h2><p><img src="/deng123-dev.github.io/images/pasted-49.png" alt=" "></p>
+<a id="more"></a>
+<p> 相关知识点：</p>
+<ul>
+<li><p>稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。</p>
+</li>
+<li><p>不稳定：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。</p>
+</li>
+<li><p>时间复杂度：对排序数据的总的操作次数。反映当n变化时，操作次数呈现什么规律。</p>
+</li>
+<li><p>空间复杂度：是指算法在计算机内执行时所需存储空间的度量，它也是数据规模n的函数</p>
+</li>
+</ul>
+<p>2.它们之间的性能比较：<br><img src="/deng123-dev.github.io/images/pasted-10.png" alt="upload successful"><br>当n较大，则应采用时间复杂度为O(nlog2n)的排序方法：<code>快速排序``堆排序</code> <code>归并排序</code></p>
+<p>排序有<code>内部排序</code>和<code>外部排序</code>,内部排序是数据记录在<code>内存</code>中进行排序，而外部排序是排序的数据很大，一次不能容纳全部的排序记录，而排序过程中需要访问<code>外存</code></p>
+<p><code>八大排序就是内部排序。</code></p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><h3 id="简单插入排序"><a href="#简单插入排序" class="headerlink" title="简单插入排序"></a>简单插入排序</h3><h4 id="算法描述："><a href="#算法描述：" class="headerlink" title="算法描述："></a>算法描述：</h4><ul>
+<li>从第一个元素开始划分出一个有序的序列</li>
+<li>依次取出下一个元素,在已经排序的元素序列中从后向前扫描</li>
+<li>如果已排序元素大于新元素，该元素移到下一个我位置</li>
+<li>重复步骤3，直到找到新元素所在位置</li>
+<li>重复2，5步骤<br><img src="/deng123-dev.github.io/images/pasted-33.png" alt="upload successful"><!-- more -->
+<h4 id="c语言实现："><a href="#c语言实现：" class="headerlink" title="c语言实现："></a>c语言实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"> #直接插入排序</span><br><span class="line"> </span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">void InsertionSort(int* arr,int len)</span><br><span class="line">&#123;</span><br><span class="line">	int i ,j;</span><br><span class="line">	for (i &#x3D; 1;i &lt;&#x3D; len;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		j &#x3D; i;</span><br><span class="line">		while (j--)</span><br><span class="line">		&#123;</span><br><span class="line">			if (arr[j - 1] &gt; arr[j])</span><br><span class="line">			&#123;</span><br><span class="line">				int temp &#x3D; arr[j - 1];</span><br><span class="line">				arr[j - 1] &#x3D; arr[j];</span><br><span class="line">				arr[j] &#x3D; temp;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				break;&#x2F;&#x2F;小于退出while循环提高效率</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int arr[] &#x3D; &#123;8,3,9,5,6,7,1,4,0,2&#125;;</span><br><span class="line">	int i &#x3D; 0;</span><br><span class="line">	int len &#x3D; sizeof(arr) &#x2F; sizeof(arr[0]);</span><br><span class="line">	InsertionSort(arr,len);</span><br><span class="line">	for (i &#x3D; 0;i &lt; (sizeof(arr) &#x2F; sizeof(arr[0]));i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;, arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><h4 id="算法描述：-1"><a href="#算法描述：-1" class="headerlink" title="算法描述："></a>算法描述：</h4>又称<strong>缩小增量排序</strong></li>
+<li>选择一个增量序列</li>
+<li>每趟排序，根据对应的增量t，进行两两数据比较，将小的放在前，大的放在后</li>
+<li>重复第二步，直到增量已用尽</li>
+</ul>
+<p><img src="/deng123-dev.github.io/images/pasted-35.png" alt="upload successful"><br>简单选择排序的基本思想：<code>比较+交换</code></p>
+<h4 id="c语言实现：-1"><a href="#c语言实现：-1" class="headerlink" title="c语言实现："></a>c语言实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">void swap(int* L, int* R)</span><br><span class="line">&#123;</span><br><span class="line">	int temp &#x3D; *L;</span><br><span class="line">	*L &#x3D; *R;</span><br><span class="line">	*R &#x3D; temp;</span><br><span class="line">&#125;</span><br><span class="line">void ShellSort(int* arr, int len)</span><br><span class="line">&#123;</span><br><span class="line">	for (int gap &#x3D; (len &#x2F; 2); gap &gt; 0;gap &#x2F;&#x3D; 2)&#x2F;&#x2F;设置gap起始间距为长度的一半</span><br><span class="line">	&#123;</span><br><span class="line">		&#x2F;&#x2F;以gap为间距组从一个组，每次对这个组进行直接插入排序</span><br><span class="line">		for (int i &#x3D; gap; i &lt; len;i++)</span><br><span class="line">			&#x2F;&#x2F;以gap位置为起始，找到每一个元素以gap间隔为组向前进行直接插入排序</span><br><span class="line">		&#123;</span><br><span class="line">			int j &#x3D; i;</span><br><span class="line">			while ((arr[j]&lt; arr[j - gap]) &amp;&amp; j - gap &gt;&#x3D; 0)</span><br><span class="line">				&#123;</span><br><span class="line">					swap(&amp;arr[j],&amp;arr[j -gap]);</span><br><span class="line">					j -&#x3D; gap;&#x2F;&#x2F;找到之前所有的成员比较并排序</span><br><span class="line">				&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int arr[] &#x3D; &#123; 8,3,9,5,6,7,1,4,0,2 &#125;;</span><br><span class="line">	int i &#x3D; 0;</span><br><span class="line">	int len &#x3D; sizeof(arr) &#x2F; sizeof(arr[0]);</span><br><span class="line">	ShellSort(arr, len);</span><br><span class="line">	for (i &#x3D; 0;i &lt; len;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;, arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h2><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><h4 id="算法描述：-2"><a href="#算法描述：-2" class="headerlink" title="算法描述："></a>算法描述：</h4><ul>
+<li>第一轮从头到尾对n个元素进行两两比较，进行调换位置</li>
+<li>需要对余下的n-1个数据进行从头到尾两两比较直到数据有序为止</li>
+</ul>
+<p><img src="/deng123-dev.github.io/images/pasted-36.png" alt="upload successful"></p>
+<h4 id="c语言实现：-2"><a href="#c语言实现：-2" class="headerlink" title="c语言实现："></a>c语言实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">void bubbleSort(int* arr,int len)</span><br><span class="line">&#123;</span><br><span class="line">	int i, j;</span><br><span class="line">	for (i &#x3D; 0;i &lt; len - 1;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for (j &#x3D; 0;j &lt; len - 1 - i;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if (arr[j] &gt; arr[j + 1])</span><br><span class="line">			&#123;</span><br><span class="line">				int temp &#x3D; arr[j];</span><br><span class="line">				arr[j] &#x3D; arr[j + 1];</span><br><span class="line">				arr[j + 1] &#x3D; temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	int arr[] &#x3D; &#123;6,3,8,7,5,4,1,2,0&#125;;</span><br><span class="line">	int len &#x3D; sizeof(arr) &#x2F; sizeof(arr[0]);</span><br><span class="line">	bubbleSort(arr,len);</span><br><span class="line">	for (i &#x3D; 0;i &lt; (sizeof(arr) &#x2F; sizeof(arr[0]));i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;, arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><h4 id="算法描述：-3"><a href="#算法描述：-3" class="headerlink" title="算法描述："></a>算法描述：</h4><p><strong>实例排序：</strong></p>
+<p><strong><em>一趟排序结果：{49 38 65 97 76 13 27 49’}</em></strong></p>
+<p><strong><em>二趟排序结果：{27 38 13} 49 {76 97 65 49’}</em></strong></p>
+<p><strong><em>三趟排序结果：{13} 27 {38} 49 {76 97 65 49’}</em></strong></p>
+<p><strong><em>四趟排序结果：13 27 38 49 {49’ 65} 76 {97}</em></strong></p>
+<ul>
+<li>定义low和high指向头尾两个关键数据</li>
+</ul>
+<ul>
+<li>将low所指数据与其后面数据进行比较，如果比其小就把它放在该数据的前面</li>
+</ul>
+<ul>
+<li>将high所指数据与其后面数据进行比较，如果比其大就把它放在该数据的后面</li>
+</ul>
+<ul>
+<li>当low和high指针所指数据重叠时，将数据分为两组，重新设置头尾数据为low和high，重复上述操作，直至数据有序</li>
+</ul>
+<p><img src="/deng123-dev.github.io/images/pasted-37.png" alt="upload successful"></p>
+<h4 id="c语言实现：-3"><a href="#c语言实现：-3" class="headerlink" title="c语言实现："></a>c语言实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">#include&lt;assert.h&gt;</span><br><span class="line"> </span><br><span class="line">void QuickSort(int* arr,int left, int right)</span><br><span class="line">&#123;</span><br><span class="line">	int i &#x3D; left; </span><br><span class="line">	int j &#x3D; right;</span><br><span class="line">	int temp &#x3D; arr[i];</span><br><span class="line"> </span><br><span class="line">	if (i &gt;&#x3D; j)</span><br><span class="line">		return;</span><br><span class="line"> </span><br><span class="line">	while (i !&#x3D; j)</span><br><span class="line">	&#123;</span><br><span class="line">		while (arr[j] &gt;&#x3D; temp &amp;&amp; i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		if (i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			arr[i] &#x3D; arr[j];</span><br><span class="line">		&#125;</span><br><span class="line">		while (arr[i] &lt;&#x3D; temp &amp;&amp; i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		if ( i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			arr[j] &#x3D; arr[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	arr[i] &#x3D; temp;</span><br><span class="line">	QuickSort(arr,left,i - 1);</span><br><span class="line">	QuickSort(arr, i + 1, right);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int arr[] &#x3D; &#123;8,3,9,5,6,7,1,4,0,2&#125;;</span><br><span class="line">	int i &#x3D; 0;</span><br><span class="line">	int len &#x3D; sizeof(arr) &#x2F; sizeof(arr[0]);</span><br><span class="line">	QuickSort(arr,0,len - 1);</span><br><span class="line">	for (i &#x3D; 0;i &lt; len ;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;, arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><h3 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h3><h4 id="算法描述：-4"><a href="#算法描述：-4" class="headerlink" title="算法描述："></a>算法描述：</h4><ul>
+<li>在第一个位置开始从数组找到最小的数据</li>
+</ul>
+<ul>
+<li>往下一个位置开始找到数组中最小的数据 </li>
+</ul>
+<ul>
+<li>重复第二步，直到数组有序为止</li>
+</ul>
+<p><img src="/deng123-dev.github.io/images/pasted-38.png" alt="upload successful"></p>
+<h4 id="c语言实现：-4"><a href="#c语言实现：-4" class="headerlink" title="c语言实现："></a>c语言实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">void SelectionSort(int* arr, int len)</span><br><span class="line">&#123;</span><br><span class="line">	int min;&#x2F;&#x2F;保存当前最小数字下标</span><br><span class="line">	for (int i &#x3D; 0;i &lt; len - 1;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		min &#x3D; i;</span><br><span class="line">		for (int j &#x3D; i + 1;j &lt; len; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if (arr[min] &gt; arr[j])</span><br><span class="line">			&#123;</span><br><span class="line">				min &#x3D; j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int temp &#x3D; arr[min];</span><br><span class="line">		arr[min] &#x3D; arr[i];</span><br><span class="line">		arr[i] &#x3D; temp;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int arr[] &#x3D; &#123;8,3,9,5,6,7,1,4,0,2&#125;;</span><br><span class="line">	int i &#x3D; 0;</span><br><span class="line">	int len &#x3D; sizeof(arr) &#x2F; sizeof(arr[0]);</span><br><span class="line">	SelectionSort(arr,len);</span><br><span class="line">	for (i &#x3D; 0;i &lt; len ;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;, arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><h4 id="算法描述：-5"><a href="#算法描述：-5" class="headerlink" title="算法描述："></a>算法描述：</h4><p>堆就是用数组实现的二叉树，所以没有父指针或字指针</p>
+<p>堆分为两种：<strong>最大堆</strong> 和<strong>最小堆</strong></p>
+<p>两者区别：</p>
+<p>节点的值比每一个子节点的值都要大</p>
+<p>节点的值比每一个子节点的值都要小</p>
+<p>鉴于最大堆和最小堆是对称关系，理解其中一种即可。所以接下来我们为你们说明一下最大堆的排序</p>
+<p>最大堆进行升序排序的思想：<br>1.<br>初始化堆：将数列a[1..n]构成最大堆</p>
+<p>2.<br>交换数据：将a[1]和a[n] 交换，使a[n]是a[1…n]中的最大值；然后将a[1…n-1]重新调整为最大堆。 接着，将a[1]和a[n-1]交换，使a[n-1]是a[1…n-1]中的最大值；然后将a[1…n-2]重新调整为最大值。 依次类推，直到整个数列都是有序的。</p>
+<h4 id="c语言实现：-5"><a href="#c语言实现：-5" class="headerlink" title="c语言实现："></a>c语言实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">#include&lt;assert.h&gt;</span><br><span class="line">void AdjustHead(int *arr, int parent, int len)</span><br><span class="line">&#123;&#x2F;&#x2F;大堆</span><br><span class="line">	assert(arr);</span><br><span class="line">	int child &#x3D; parent * 2 + 1;</span><br><span class="line">	while (child &lt; len)</span><br><span class="line">	&#123;</span><br><span class="line">		if (arr[child] &lt; arr[child + 1] &amp;&amp; child + 1 &lt; len)</span><br><span class="line">		&#123;</span><br><span class="line">			child +&#x3D; 1;&#x2F;&#x2F;左子树小于右子树交且合法时交换</span><br><span class="line">		&#125;</span><br><span class="line">		if (arr[child] &gt; arr[parent])</span><br><span class="line">		&#123;&#x2F;&#x2F;将大值交给父亲节点</span><br><span class="line">			int temp &#x3D; arr[child];</span><br><span class="line">			arr[child] &#x3D; arr[parent];</span><br><span class="line">			arr[parent] &#x3D; temp;</span><br><span class="line">			&#x2F;&#x2F;复位，再次判断，防止左右孩子都大于双亲</span><br><span class="line">			parent &#x3D; child;</span><br><span class="line">			child &#x3D; parent * 2 + 1;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			return;&#x2F;&#x2F;不满足退出</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void HeapSort(int* arr, int len)</span><br><span class="line">&#123;</span><br><span class="line">	&#x2F;&#x2F;建堆</span><br><span class="line">	int root &#x3D; (len - 2) &gt;&gt; 1;&#x2F;&#x2F;找到最后一个非叶子节点</span><br><span class="line">	for (root;root &gt;&#x3D; 0;--root)</span><br><span class="line">	&#123;</span><br><span class="line">		AdjustHead(arr, root, len);</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F;排序</span><br><span class="line">	int end &#x3D; len - 1;</span><br><span class="line">	while (end)</span><br><span class="line">	&#123;</span><br><span class="line">		int temp &#x3D; arr[0];</span><br><span class="line">		arr[0] &#x3D; arr[end];</span><br><span class="line">		arr[end] &#x3D; temp;</span><br><span class="line">		&#x2F;&#x2F;循环排序每一个元素</span><br><span class="line">		AdjustHead(arr,0,end);</span><br><span class="line">		end--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int arr[] &#x3D; &#123;8,3,9,5,6,7,1,4,0,2&#125;;</span><br><span class="line">	int i &#x3D; 0;</span><br><span class="line">	int len &#x3D; sizeof(arr) &#x2F; sizeof(arr[0]);</span><br><span class="line">	HeapSort(arr,len);</span><br><span class="line">	for (i &#x3D; 0;i &lt; len ;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;, arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><h3 id="归并排序-1"><a href="#归并排序-1" class="headerlink" title="归并排序"></a>归并排序</h3><h4 id="算法描述：-6"><a href="#算法描述：-6" class="headerlink" title="算法描述："></a>算法描述：</h4><ul>
+<li>将长度为n的输入序列分为长度为n/2的子序列</li>
+<li>对两个子序列分别采用归并排序</li>
+<li>将两个排序号的子序列合并成一个最终的排序序列</li>
+</ul>
+<p><img src="/deng123-dev.github.io/images/pasted-39.png" alt="upload successful"></p>
+<h4 id="c语言实现：-6"><a href="#c语言实现：-6" class="headerlink" title="c语言实现："></a>c语言实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">#include&lt;assert.h&gt;</span><br><span class="line">&#x2F;&#x2F;合并</span><br><span class="line">void Merge(int* arr, int low, int mid, int high)</span><br><span class="line">&#123;</span><br><span class="line">	int i &#x3D; low;&#x2F;&#x2F;第一组下标</span><br><span class="line">	int j &#x3D; mid + 1;&#x2F;&#x2F;第二组下标</span><br><span class="line">	int k &#x3D; 0;</span><br><span class="line">	int arr2[100] &#x3D; &#123;0&#125;;&#x2F;&#x2F;临时排序存放序列</span><br><span class="line">&#x2F;&#x2F;循环判断arr[i]和arr[j]的值，谁小谁放在arr2中</span><br><span class="line">	while (i &lt;&#x3D; mid &amp;&amp; j &lt;&#x3D; high)</span><br><span class="line">	&#123;</span><br><span class="line">		if (arr[i] &lt;&#x3D; arr[j])</span><br><span class="line">		&#123;</span><br><span class="line">			arr2[k] &#x3D; arr[i];</span><br><span class="line">			i++;</span><br><span class="line">			k++;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			arr2[k] &#x3D; arr[j];</span><br><span class="line">			j++;</span><br><span class="line">			k++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F;当至少一组放完后，剩下的全部按顺序放入arr2（已经有序的数组）</span><br><span class="line">	&#x2F;&#x2F;最后一组元素可能不过正常数量</span><br><span class="line">	    while (i &lt;&#x3D; mid)</span><br><span class="line">		&#123;</span><br><span class="line">			arr2[k] &#x3D; arr[i];</span><br><span class="line">			i++;</span><br><span class="line">			k++;</span><br><span class="line">		&#125;</span><br><span class="line">		while (j &lt;&#x3D; high)</span><br><span class="line">		&#123;</span><br><span class="line">			arr2[k] &#x3D; arr[j];</span><br><span class="line">			j++;</span><br><span class="line">			k++;</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F;将arr2中的序列复制到arr中</span><br><span class="line">		for (k &#x3D; 0, i &#x3D; low;i &lt;&#x3D; high;i++, k++)</span><br><span class="line">		&#123;</span><br><span class="line">			arr[i] &#x3D; arr2[k];</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void MergeSort(int *arr, int len)</span><br><span class="line">&#123;</span><br><span class="line">&#x2F;&#x2F;间隔增加（gap就是一组几个元素）</span><br><span class="line">	for( int gap &#x3D; 1;gap &lt; len;gap &#x3D; (gap * 2) )</span><br><span class="line">	&#123;</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		&#x2F;&#x2F;从间隔gap开始排序</span><br><span class="line">		for (i &#x3D; 0;i + 2*gap - 1 &lt; len;i &#x3D; i + 2*gap)</span><br><span class="line">		&#123;</span><br><span class="line">			Merge(arr, i , i + gap - 1 , i + 2*gap - 1 );</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F;当gap大于len的一半时，排序for无法排序的两个子组</span><br><span class="line">		if (i + gap - 1 &lt; len) </span><br><span class="line">		&#123;</span><br><span class="line">			Merge(arr, i, i + gap - 1, len - 1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int arr[] &#x3D; &#123;8,3,9,5,6,7,1,4,0,2&#125;;</span><br><span class="line">	int i &#x3D; 0;</span><br><span class="line">	int len &#x3D; sizeof(arr) &#x2F; sizeof(arr[0]);</span><br><span class="line">	MergeSort(arr,len );</span><br><span class="line">	for (i &#x3D; 0;i &lt; len;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;, arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/deng123-dev.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8%EF%BC%8C%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" rel="next" title="数据结构：线性表，栈和队列">
+      数据结构：线性表，栈和队列 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概叙"><span class="nav-number">1.</span> <span class="nav-text">概叙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序"><span class="nav-number">2.</span> <span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单插入排序"><span class="nav-number">2.1.</span> <span class="nav-text">简单插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法描述："><span class="nav-number">2.1.1.</span> <span class="nav-text">算法描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c语言实现："><span class="nav-number">2.1.2.</span> <span class="nav-text">c语言实现：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序"><span class="nav-number">2.2.</span> <span class="nav-text">希尔排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法描述：-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">算法描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c语言实现：-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">c语言实现：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交换排序"><span class="nav-number">3.</span> <span class="nav-text">交换排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">3.1.</span> <span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法描述：-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">算法描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c语言实现：-2"><span class="nav-number">3.1.2.</span> <span class="nav-text">c语言实现：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">3.2.</span> <span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法描述：-3"><span class="nav-number">3.2.1.</span> <span class="nav-text">算法描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c语言实现：-3"><span class="nav-number">3.2.2.</span> <span class="nav-text">c语言实现：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">4.</span> <span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单选择排序"><span class="nav-number">4.1.</span> <span class="nav-text">简单选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法描述：-4"><span class="nav-number">4.1.1.</span> <span class="nav-text">算法描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c语言实现：-4"><span class="nav-number">4.1.2.</span> <span class="nav-text">c语言实现：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆排序"><span class="nav-number">4.2.</span> <span class="nav-text">堆排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法描述：-5"><span class="nav-number">4.2.1.</span> <span class="nav-text">算法描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c语言实现：-5"><span class="nav-number">4.2.2.</span> <span class="nav-text">c语言实现：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序"><span class="nav-number">5.</span> <span class="nav-text">归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序-1"><span class="nav-number">5.1.</span> <span class="nav-text">归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法描述：-6"><span class="nav-number">5.1.1.</span> <span class="nav-text">算法描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c语言实现：-6"><span class="nav-number">5.1.2.</span> <span class="nav-text">c语言实现：</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">邓钧元的个人博客</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/deng123-dev.github.io/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/deng123-dev.github.io/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/deng123-dev.github.io/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">邓钧元的个人博客</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/deng123-dev.github.io/lib/anime.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/deng123-dev.github.io/js/utils.js"></script>
+
+<script src="/deng123-dev.github.io/js/motion.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/deng123-dev.github.io/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

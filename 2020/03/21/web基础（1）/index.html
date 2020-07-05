@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/deng123-dev.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/deng123-dev.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/deng123-dev.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/deng123-dev.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/deng123-dev.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/deng123-dev.github.io/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/deng123-dev.github.io/lib/pace/pace-theme-minimal.min.css">
+  <script src="/deng123-dev.github.io/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/deng123-dev.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="网络概览终端：用户与计算机进行交互的设备 网络：是由若干节点和连接这些节点的链路构成，表示诸多对象及其相互联系。 按拓扑结构分类： 总线型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web基础（1）">
+<meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/03/21/web%E5%9F%BA%E7%A1%80%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:site_name" content="邓钧元的个人博客">
+<meta property="og:description" content="网络概览终端：用户与计算机进行交互的设备 网络：是由若干节点和连接这些节点的链路构成，表示诸多对象及其相互联系。 按拓扑结构分类： 总线型">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-53.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-54.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-55.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-56.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-57.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-58.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-59.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-60.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-61.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-62.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-63.png">
+<meta property="article:published_time" content="2020-03-21T09:42:45.000Z">
+<meta property="article:modified_time" content="2020-07-05T06:49:01.941Z">
+<meta property="article:author" content="邓钧元的个人博客">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/deng123-dev.github.io/images/pasted-53.png">
+
+<link rel="canonical" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/03/21/web%E5%9F%BA%E7%A1%80%EF%BC%881%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>web基础（1） | 邓钧元的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/deng123-dev.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">邓钧元的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/deng123-dev.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/deng123-dev.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/deng123-dev.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/deng123-dev.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/deng123-dev.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/03/21/web%E5%9F%BA%E7%A1%80%EF%BC%881%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/deng123-dev.github.io/images/avatar.gif">
+      <meta itemprop="name" content="邓钧元的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓钧元的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          web基础（1）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-21 17:42:45" itemprop="dateCreated datePublished" datetime="2020-03-21T17:42:45+08:00">2020-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-05 14:49:01" itemprop="dateModified" datetime="2020-07-05T14:49:01+08:00">2020-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/deng123-dev.github.io/categories/web/" itemprop="url" rel="index"><span itemprop="name">web</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="网络概览"><a href="#网络概览" class="headerlink" title="网络概览"></a>网络概览</h1><p>终端：用户与计算机进行交互的设备</p>
+<p>网络：是由若干节点和连接这些节点的链路构成，表示诸多对象及其相互联系。</p>
+<h2 id="按拓扑结构分类："><a href="#按拓扑结构分类：" class="headerlink" title="按拓扑结构分类："></a>按拓扑结构分类：</h2><ol>
+<li>总线型</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-53.png" alt="upload successful"></p>
+<a id="more"></a>
+<ol start="2">
+<li>环型</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-54.png" alt="upload successful"><br>3. 星型</p>
+<p><img src="/deng123-dev.github.io/images/pasted-55.png" alt="upload successful"><br>4. 树型</p>
+<p><img src="/deng123-dev.github.io/images/pasted-56.png" alt="upload successful"><br>5. 网型</p>
+<p><img src="/deng123-dev.github.io/images/pasted-57.png" alt="upload successful"></p>
+<h2 id="按覆盖范围分"><a href="#按覆盖范围分" class="headerlink" title="按覆盖范围分"></a>按覆盖范围分</h2><ul>
+<li>局域网 LAN</li>
+<li>城域网 MAN</li>
+<li>广域网 WAN<h2 id="网络主要功能"><a href="#网络主要功能" class="headerlink" title="网络主要功能"></a>网络主要功能</h2></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 资源共享</span><br><span class="line">2. 快速传输信息</span><br><span class="line">3. 提高系统可靠性</span><br><span class="line">4. 易于进行分布式处理</span><br><span class="line">5. 综合信息服务</span><br></pre></td></tr></table></figure>
+<h1 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h1><h2 id="OSI（开放式系统互联模型）层次"><a href="#OSI（开放式系统互联模型）层次" class="headerlink" title="OSI（开放式系统互联模型）层次"></a>OSI（开放式系统互联模型）层次</h2><p><img src="/deng123-dev.github.io/images/pasted-58.png" alt="upload successful"></p>
+<p><img src="/deng123-dev.github.io/images/pasted-59.png" alt="upload successful"></p>
+<h2 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h2><p> TCP/IP协议族是一个四层协议系统：<br><img src="/deng123-dev.github.io/images/pasted-60.png" alt="upload successful"></p>
+<h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><ol>
+<li><p>实现网卡驱动，以处理数据在以太网等物理媒介的传输</p>
+</li>
+<li><p>为上层协议提供一个统一的接口</p>
+</li>
+<li><p>协议应用：</p>
+<ul>
+<li>以太网协议：<br>规定一组电信号就是一个数据包，一个数据包为<strong>一帧</strong>。数据包是从一个网卡发到另一个网卡，<strong>网卡地址</strong>，也就是帧首部所包含的<strong>MAC地址</strong>，具有全球唯一性。<strong>对电信号进行分组并形成具有特定意义的数据帧，然后以广播的形式通过物理介质发送给接收方。</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><ol>
+<li><p>网络层的任务之一使选择这些中间节点，以确定两台主机间的通讯路径</p>
+</li>
+<li><p>其次网络层对上层协议隐藏了网络拓扑联结的细节，在使得传输层看来通讯双方是直接连接的</p>
+</li>
+<li><p>协议应用：</p>
+<ul>
+<li>IP协议：判断两台主机是否处于同一个网络，IP地址目前有两个版本，分别是IPV4，IPV6,IPV4是一个32位地址，常采用4个十进制数字表示。IP协议将这个32位的地址分为两部分，前面部分表示网络地址，后面部分表示该主机在局域网中的地址。由于各类地址的分发不尽相同，以c类地址为例，其中前24位就是网络地址，后8位就是主机地址。因此，<strong>如果两个IP地址在同一子网内，则网络地址一定相同。</strong>为了判断IP地址中的网络地址，IP协议还引入了子网掩码，IP地址和子网掩码通过<strong>按位与</strong>运算后就可以得到网络地址。</li>
+<li>ARP(地址转换协议):根据IP地址获取物理地址的一个TCP/IP协议。</li>
+<li>RARP(逆地址转换协议):允许局域网的物理机器从网关服务器的 ARP 表或者缓存上请求其 IP 地址。</li>
+<li>路由协议：ARP的MAC寻址还是局限在同一个子网中，因此网络层引入了路由协议，首先通过IP来判断主机是否在同一子网，如果在同一子网，通过ARP协议查询对应的MAC地址，然后以广播形式向子网内的主机发送数据包；如果不在同一子网，以太网会将数据包转发给本子网的网关进行路由。网关是互联网网上子网与子网之间的桥梁，网关进行多次转发，最终将数据包转发到目标IP所在的子网中，然后通过ARP获取目标及MAC,最终发送。</li>
+</ul>
+</li>
+<li><p>IPV4数据包结构：<br><img src="/deng123-dev.github.io/images/pasted-61.png" alt="upload successful"></p>
+</li>
+<li><p>总结:<br>总而言之，网络层的主要工作是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.定义网络地址</span><br><span class="line">2.区分网络</span><br><span class="line">3.子网内MAC寻址</span><br><span class="line">4.对于不同子网数据包进行路由</span><br></pre></td></tr></table></figure>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>协议为网络端点主机上提供可靠、可靠、有效的报文传送服务。其功能紧密以来于网络层的虚拟电路或数据报服务，传输层定义了主机应用程序之间的连通性。传输层的服务要经历<strong><em>连接建立，数据传输,传输连接释放</em></strong>3个阶段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">网络层只是根据网络地址将源结点发出的数据包传送到目的结点，而传输层则负责将数据可靠地传送到相应的端口</span><br></pre></td></tr></table></figure>
+<h4 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h4><p>面向连接的，可靠传输的，有流量控制的，拥塞控制，面向字节流传输等很多优点，在端和端之间通信</p>
+<h5 id="三次握手（面向连接）"><a href="#三次握手（面向连接）" class="headerlink" title="三次握手（面向连接）"></a>三次握手（面向连接）</h5><p>在通信之前，会通过三次握手机制来判断连接是否可用，UDP则不需要，直接传</p>
+</li>
+</ol>
+<p><img src="/deng123-dev.github.io/images/pasted-62.png" alt="upload successful"></p>
+<ul>
+<li>第一次握手：<br>客户端想与服务器连接了，所以状态变为主动打开，同时发送一个连接请求给服务器端SYN=1，并且会携带x个字节过去。发送完请求连接报文后，客户端的状态变为了SYN_SENT，可以说这个状态是等待发送确认(为了发送第三次握手时的确认包)</li>
+</ul>
+<p>(<em>其实就是客户端和服务器谈恋爱，主动给服务器发一个消息，然后等待服务器的回应</em>)</p>
+<ul>
+<li>第二次握手：<br>服务器端收到连接请求报文后，从LSTTEN变为被动打开状态，然后给客户端返回两层报文。一是确认报文，而可以到达告诉客户端，我也打开连接了。发完后，变为SYN_RCVD状态（等待确认状态，等待接收客户端发过来的确认包）</li>
+</ul>
+<p>(<em>服务器这边收到了客户机想谈恋爱的消息，从被动状态变成主动，开始也给客户机发一个暗示客户机服务器想谈恋爱的消息</em>)</p>
+<ul>
+<li>第三次握手：<br>客户得到服务器端的确认知道服务器端也已经准备好了连接后，还会发一个确认报文到服务器端，告诉它，我收到你发送的报文了，接下来我们两个进行连接。客户端发送完确认报文后，进入ESTABLISHED，服务器接到了，也变成了 ESTABLISHED，连接完成。</li>
+</ul>
+<p>(<em>客户机收到了服务器发的消息，明白了服务器的意思，再给服务器发送一个表白的消息，正式的和服务器在一起，客户机和服务器的连接就建立了</em>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可以划一波重点：</span><br><span class="line">三次握手的作用：确认双方对对方的收发能力是否正常</span><br></pre></td></tr></table></figure>
+<h5 id="四次握手，关闭连接"><a href="#四次握手，关闭连接" class="headerlink" title="四次握手，关闭连接"></a>四次握手，关闭连接</h5><p><img src="/deng123-dev.github.io/images/pasted-63.png" alt="upload successful"><br>由于TCP连接是全双工的，因此每个方向都必须单独进行关闭<br>(<em>相当一对情侣分手</em>)</p>
+<ul>
+<li><p>客户端A发送一个FIN，用来关闭客户A到服务器B的数据传送。<br>(<em>客户端要和服务端分手，就发了一个分手消息给服务端</em>)</p>
+</li>
+<li><p>服务器B收到这个FIN，它发回一个ACK，确认序号为收到的序号加1。和SYN一样，一个FIN将占用一个序号。<br>(<em>服务器收到了这个消息，有点伤心而且不敢相信，发消息给客户端，这时客户端确认服务器收到了要分手的消息</em>)</p>
+</li>
+<li><p>服务器B关闭与客户端A的连接，发送一个FIN给客户端A。</p>
+</li>
+</ul>
+<p>(<em>服务器确认了客户端执意与自己分手，直接与客户端分手并且中断了他们的连接</em>)</p>
+<ul>
+<li>客户端A发回ACK报文确认，并将确认序号设置为收到序号加1。<br>(<em>客户端这时收到服务器发的分手消息，为她送上最后的祝福，同时也让服务器知道客户机收到了她的消息</em>)</li>
+</ul>
+<h4 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h4><p>UDP 为应用程序提供了一种无需建立连接就可以发送封装的 IP 数据包的方法<br>其有以下特点：</p>
+<ul>
+<li><p>面向无连接</p>
+</li>
+<li><p>有单播，多播和广播的功能</p>
+</li>
+<li><p>UDP 是面向报文的</p>
+</li>
+<li><p>不可靠性</p>
+</li>
+</ul>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><h4 id="DNS-域名解析系统"><a href="#DNS-域名解析系统" class="headerlink" title="DNS(域名解析系统)"></a>DNS(域名解析系统)</h4><p>在internet上域名与IP地址一一对应，域名便于人们记忆，但机器之间只认IP地址，他们之间的转换称为<strong><em>域名解析</em></strong>,DNS就是专门用来解析域名解析的服务器</p>
+<h4 id="DHCP-动态主机配置协议"><a href="#DHCP-动态主机配置协议" class="headerlink" title="DHCP(动态主机配置协议)"></a>DHCP(动态主机配置协议)</h4><p>DHCP（动态主机配置协议）是一个局域网的网络协议。指的是由服务器控制一段IP地址范围，客户机登录服务器时就可以自动获得服务器分配的IP地址和子网掩码。能够动态分配IP地址</p>
+<h4 id="FTP-文件传输协议"><a href="#FTP-文件传输协议" class="headerlink" title="FTP(文件传输协议)"></a>FTP(文件传输协议)</h4><p>用于Internet上的文件控制的双向传输，同时，它也是一个应用程序，TCP协议</p>
+<p>FTP允许用户以文件操作的方式（如文件的增、删、改、查、传送等）与另一主机相互通信。然而， 用户并不真正登录到自己想要存取的计算机上面而成为完全用户， 可用FTP程序访问远程资源， 实现用户往返传输文件、目录管理以及访问电子邮件等等， 即使双方计算机可能配有不同的操作系统和文件存储方式</p>
+<p><strong>ftp默认端口21</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/deng123-dev.github.io/tags/web/" rel="tag"># web</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2020/02/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8%EF%BC%8C%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" rel="prev" title="数据结构：线性表，栈和队列">
+      <i class="fa fa-chevron-left"></i> 数据结构：线性表，栈和队列
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2020/04/04/web%E5%9F%BA%E7%A1%80%EF%BC%882%EF%BC%89/" rel="next" title="web基础（2）">
+      web基础（2） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络概览"><span class="nav-number">1.</span> <span class="nav-text">网络概览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#按拓扑结构分类："><span class="nav-number">1.1.</span> <span class="nav-text">按拓扑结构分类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按覆盖范围分"><span class="nav-number">1.2.</span> <span class="nav-text">按覆盖范围分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络主要功能"><span class="nav-number">1.3.</span> <span class="nav-text">网络主要功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络协议"><span class="nav-number">2.</span> <span class="nav-text">网络协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI（开放式系统互联模型）层次"><span class="nav-number">2.1.</span> <span class="nav-text">OSI（开放式系统互联模型）层次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP协议族"><span class="nav-number">2.2.</span> <span class="nav-text">TCP&#x2F;IP协议族</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据链路层"><span class="nav-number">2.2.1.</span> <span class="nav-text">数据链路层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络层"><span class="nav-number">2.2.2.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输层"><span class="nav-number">2.2.3.</span> <span class="nav-text">传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP协议"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">TCP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#三次握手（面向连接）"><span class="nav-number">2.2.3.1.1.</span> <span class="nav-text">三次握手（面向连接）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四次握手，关闭连接"><span class="nav-number">2.2.3.1.2.</span> <span class="nav-text">四次握手，关闭连接</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP协议"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">UDP协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用层"><span class="nav-number">2.2.4.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS-域名解析系统"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">DNS(域名解析系统)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP-动态主机配置协议"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">DHCP(动态主机配置协议)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FTP-文件传输协议"><span class="nav-number">2.2.4.3.</span> <span class="nav-text">FTP(文件传输协议)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">邓钧元的个人博客</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/deng123-dev.github.io/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/deng123-dev.github.io/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/deng123-dev.github.io/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">邓钧元的个人博客</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/deng123-dev.github.io/lib/anime.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/deng123-dev.github.io/js/utils.js"></script>
+
+<script src="/deng123-dev.github.io/js/motion.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/deng123-dev.github.io/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
