@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-124.png">
 <meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-125.png">
 <meta property="article:published_time" content="2020-05-31T13:45:57.000Z">
-<meta property="article:modified_time" content="2020-07-05T06:50:14.012Z">
+<meta property="article:modified_time" content="2020-07-05T08:12:45.065Z">
 <meta property="article:author" content="邓钧元的个人博客">
 <meta property="article:tag" content="springboot">
 <meta name="twitter:card" content="summary">
@@ -238,7 +238,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-05 14:50:14" itemprop="dateModified" datetime="2020-07-05T14:50:14+08:00">2020-07-05</time>
+                <time title="Modified: 2020-07-05 16:12:45" itemprop="dateModified" datetime="2020-07-05T16:12:45+08:00">2020-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,6 +276,7 @@
 <li><p>springboot默认在templates下存放动态页面，springboot中不推荐使用JSP作为视图层技术，默认使用Thymeleaf来做动态页面</p>
 </li>
 </ul>
+<hr>
 <h2 id="创建并访问一个静态资源"><a href="#创建并访问一个静态资源" class="headerlink" title="创建并访问一个静态资源"></a>创建并访问一个静态资源</h2><ol>
 <li>创建一个静态文件</li>
 </ol>
@@ -284,12 +285,14 @@
 <li>测试结果</li>
 </ol>
 <p><img src="/deng123-dev.github.io/images/pasted-117.png" alt="upload successful"></p>
-<h2 id="静态资源存放其他位置"><a href="#静态资源存放其他位置" class="headerlink" title="静态资源存放其他位置"></a>静态资源存放其他位置</h2><h3 id="springboot-访问静态资源的位置"><a href="#springboot-访问静态资源的位置" class="headerlink" title="springboot 访问静态资源的位置"></a>springboot 访问静态资源的位置</h3><p>classpath:/META-INF/resources/</p>
+<hr>
+<h2 id="静态资源存放其他位置"><a href="#静态资源存放其他位置" class="headerlink" title="静态资源存放其他位置"></a>静态资源存放其他位置</h2><hr>
+<h3 id="springboot-访问静态资源的位置"><a href="#springboot-访问静态资源的位置" class="headerlink" title="springboot 访问静态资源的位置"></a>springboot 访问静态资源的位置</h3><p>classpath:/META-INF/resources/</p>
 <p>classpath:/resources/</p>
 <p>classpath:/static/</p>
 <p>classpath:/public/</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">其中的classpath均是指main目录下的resources目录</span><br><span class="line">不过除开默认访问位置，也可以自定义访问位置</span><br></pre></td></tr></table></figure>
-
+<hr>
 <h3 id="自定义静态文件访问位置"><a href="#自定义静态文件访问位置" class="headerlink" title="自定义静态文件访问位置"></a>自定义静态文件访问位置</h3><p>步骤：</p>
 <ul>
 <li><p>访问application.properties</p>
@@ -299,8 +302,9 @@
 </ul>
 <p><img src="/deng123-dev.github.io/images/pasted-118.png" alt="upload successful"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">请注意：</span><br><span class="line">如果自定义了静态资源的默认访问位置，原有的默认访问位置就会失效</span><br></pre></td></tr></table></figure>
-
-<h1 id="springboot-文件上传"><a href="#springboot-文件上传" class="headerlink" title="springboot 文件上传"></a>springboot 文件上传</h1><h2 id="创建一个文件上传页面"><a href="#创建一个文件上传页面" class="headerlink" title="创建一个文件上传页面"></a>创建一个文件上传页面</h2><p><img src="/deng123-dev.github.io/images/pasted-119.png" alt="upload successful"></p>
+<hr>
+<h1 id="springboot-文件上传"><a href="#springboot-文件上传" class="headerlink" title="springboot 文件上传"></a>springboot 文件上传</h1><hr>
+<h2 id="创建一个文件上传页面"><a href="#创建一个文件上传页面" class="headerlink" title="创建一个文件上传页面"></a>创建一个文件上传页面</h2><p><img src="/deng123-dev.github.io/images/pasted-119.png" alt="upload successful"></p>
 <p>步骤</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">· main目录中的static目录中创建一个html文件</span><br><span class="line">· 用html标记语言攥写网页</span><br></pre></td></tr></table></figure>
 <p>html标记语言</p>
@@ -327,6 +331,7 @@
 <p><img src="/deng123-dev.github.io/images/pasted-125.png" alt="upload successful"></p>
 </li>
 </ol>
+<hr>
 <h3 id="修改上传文件大小"><a href="#修改上传文件大小" class="headerlink" title="修改上传文件大小"></a>修改上传文件大小</h3><ul>
 <li><p>配置单个上个上传文件的大小的限制</p>
 <p>spring.servlet.multipart.max-file-size=2MB</p>

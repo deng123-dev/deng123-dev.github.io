@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"github.com","root":"/deng123-dev.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="spring boot入门springboot的特点 springboot来简化spring应用开发  整个spring技术栈的大整合  J2EE的一站式解决方案 （我觉得简单来说就是对用户封装了很多细节，不需要用户考虑其是怎样实现的）">
+  <meta name="description" content="spring boot入门 springboot的特点 springboot来简化spring应用开发  整个spring技术栈的大整合  J2EE的一站式解决方案 （我觉得简单来说就是对用户封装了很多细节，不需要用户考虑其是怎样实现的）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="springboot（1）">
 <meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/05/01/springboot%EF%BC%881%EF%BC%89/index.html">
 <meta property="og:site_name" content="邓钧元的个人博客">
-<meta property="og:description" content="spring boot入门springboot的特点 springboot来简化spring应用开发  整个spring技术栈的大整合  J2EE的一站式解决方案 （我觉得简单来说就是对用户封装了很多细节，不需要用户考虑其是怎样实现的）">
+<meta property="og:description" content="spring boot入门 springboot的特点 springboot来简化spring应用开发  整个spring技术栈的大整合  J2EE的一站式解决方案 （我觉得简单来说就是对用户封装了很多细节，不需要用户考虑其是怎样实现的）">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-74.png">
 <meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-75.png">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-87.png">
 <meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-86.png">
 <meta property="article:published_time" content="2020-05-01T13:44:45.000Z">
-<meta property="article:modified_time" content="2020-07-05T06:49:38.441Z">
+<meta property="article:modified_time" content="2020-07-05T08:20:20.869Z">
 <meta property="article:author" content="邓钧元的个人博客">
 <meta property="article:tag" content="springboot">
 <meta name="twitter:card" content="summary">
@@ -235,7 +235,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-05 14:49:38" itemprop="dateModified" datetime="2020-07-05T14:49:38+08:00">2020-07-05</time>
+                <time title="Modified: 2020-07-05 16:20:20" itemprop="dateModified" datetime="2020-07-05T16:20:20+08:00">2020-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -265,7 +265,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="spring-boot入门"><a href="#spring-boot入门" class="headerlink" title="spring boot入门"></a>spring boot入门</h1><h2 id="springboot的特点"><a href="#springboot的特点" class="headerlink" title="springboot的特点"></a>springboot的特点</h2><ul>
+        <h1 id="spring-boot入门"><a href="#spring-boot入门" class="headerlink" title="spring boot入门"></a>spring boot入门</h1><hr>
+<h2 id="springboot的特点"><a href="#springboot的特点" class="headerlink" title="springboot的特点"></a>springboot的特点</h2><ul>
 <li><p>springboot来简化spring应用开发</p>
 </li>
 <li><p>整个spring技术栈的大整合</p>
@@ -283,7 +284,7 @@
 
 <p> 缺点</p>
    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 入门容易，精通难</span><br><span class="line">2. 需要了解spring的具体框架，才能知道其具体实现原理（了解其底层API）</span><br></pre></td></tr></table></figure>
-
+<hr>
 <h2 id="如何创建一个springboot项目"><a href="#如何创建一个springboot项目" class="headerlink" title="如何创建一个springboot项目"></a>如何创建一个springboot项目</h2><ol>
 <li><p>通过官网创建项目</p>
 </li>
@@ -293,8 +294,11 @@
 </li>
 </ol>
 <p>（想要了解如何创建的小伙伴自行百度或者google，就不细说了）</p>
-<h1 id="微服务（架构风格）"><a href="#微服务（架构风格）" class="headerlink" title="微服务（架构风格）"></a>微服务（架构风格）</h1><h2 id="单体应用"><a href="#单体应用" class="headerlink" title="单体应用"></a>单体应用</h2><p> 单体应用：将所有应用程序打包在一个独立的单元，可以是JAR包，WAR包,EAR或者其他归档形式</p>
+<hr>
+<h1 id="微服务（架构风格）"><a href="#微服务（架构风格）" class="headerlink" title="微服务（架构风格）"></a>微服务（架构风格）</h1><hr>
+<h2 id="单体应用"><a href="#单体应用" class="headerlink" title="单体应用"></a>单体应用</h2><p> 单体应用：将所有应用程序打包在一个独立的单元，可以是JAR包，WAR包,EAR或者其他归档形式</p>
 <p><img src="/deng123-dev.github.io/images/pasted-74.png" alt="upload successful"><br>   虽然具有<strong>易于测试，易于部署</strong>等优点，但是随着项目的加大，会存在<strong>牵一发而动全身，受开发人员技术栈</strong>不同等原因的限制</p>
+<hr>
 <h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><p> 微服务：微服务架构是一种架构思想，将每一个功能元素都最终都是一个可独立替换和可独立升级的软件单元，微服务架构强调的重点是业务系统需要彻底的<strong>组件化和服务化</strong>，原有的<strong>单个业务系统会拆分为多个可以独立开发，设计，运行和运维的小应用</strong>，这些小应用之间通过服务完成交互和集成<br><img src="/deng123-dev.github.io/images/pasted-75.png" alt="upload successful"></p>
 <p>微服务优点</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">单个服务更易于开发、维护</span><br><span class="line">单个服务启动比较快</span><br><span class="line">局部修改容易部署</span><br><span class="line">技术栈不受限</span><br><span class="line">按需伸缩</span><br></pre></td></tr></table></figure>
@@ -310,17 +314,23 @@
 <li><p>spring cloud data flow：进行流式数据的批处理</p>
 </li>
 </ul>
-<h1 id="spring-boot项目结构："><a href="#spring-boot项目结构：" class="headerlink" title="spring boot项目结构："></a>spring boot项目结构：</h1><h2 id="pom文件"><a href="#pom文件" class="headerlink" title="pom文件"></a>pom文件</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;&#x2F;artifactId&gt;</span><br><span class="line">		&lt;version&gt;2.3.1.RELEASE&lt;&#x2F;version&gt;</span><br><span class="line">		&lt;relativePath&#x2F;&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">	&lt;&#x2F;parent&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="spring-boot项目结构："><a href="#spring-boot项目结构：" class="headerlink" title="spring boot项目结构："></a>spring boot项目结构：</h1><hr>
+<h2 id="pom文件"><a href="#pom文件" class="headerlink" title="pom文件"></a>pom文件</h2><hr>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;&#x2F;artifactId&gt;</span><br><span class="line">		&lt;version&gt;2.3.1.RELEASE&lt;&#x2F;version&gt;</span><br><span class="line">		&lt;relativePath&#x2F;&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">	&lt;&#x2F;parent&gt;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>springboot的父级依赖，只有继承它才是真正的springboot项目</p>
 </li>
 <li><p>spring-boot-starter-parent,用来提供相应的Maven依赖</p>
 </li>
 </ul>
+<hr>
 <h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-web&lt;&#x2F;artifactId&gt;</span><br><span class="line">		&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
 <p>启动器依赖</p>
+<hr>
 <h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;&#x2F;artifactId&gt;</span><br><span class="line">			&lt;&#x2F;plugin&gt;</span><br><span class="line">		&lt;&#x2F;plugins&gt;</span><br><span class="line">	&lt;&#x2F;build&gt;</span><br></pre></td></tr></table></figure>
 <p><strong>spring-boot-maven-plugin插件时将springboot的应用程序打包成jar包的插件</strong></p>
+<hr>
 <h2 id="启动类"><a href="#启动类" class="headerlink" title="启动类"></a>启动类</h2><p>基于main方法来启动springboot项目；</p>
 <p>启动类在启动时会做注解扫描位置，扫描为同包或者子包下的注解，所以启动类的位置应放在包的根下</p>
 <ul>
@@ -333,6 +343,7 @@
 </ul>
 </li>
 </ul>
+<hr>
 <h3 id="创建启动类"><a href="#创建启动类" class="headerlink" title="创建启动类"></a>创建启动类</h3><p>启动类代码：<br><img src="/deng123-dev.github.io/images/pasted-81.png" alt="upload successful"></p>
 <p>测试结果<br><img src="/deng123-dev.github.io/images/pasted-83.png" alt="upload successful"></p>
 <p>注意：</p>
@@ -340,6 +351,7 @@
 <li>加上@SpringBootApplication注解</li>
 <li>运用SpringApplication中的run方法</li>
 </ul>
+<hr>
 <h2 id="启动器"><a href="#启动器" class="headerlink" title="启动器"></a>启动器</h2><p>springboot将所有的场景做成一个个的启动器，只需要在项目里面引入这些starter相关场景的所有依赖都会导入进来。</p>
 <p> spring-boot-starter提供多达44个启动器</p>
 <ul>
@@ -353,12 +365,15 @@
 <p>支持全栈式的web开发</p>
 </li>
 </ul>
+<hr>
 <h2 id="配置文件格式"><a href="#配置文件格式" class="headerlink" title="配置文件格式"></a>配置文件格式</h2><p>springboot提供一个名称为application的全局配置文件，支持properties和YAML格式</p>
+<hr>
 <h3 id="properties格式"><a href="#properties格式" class="headerlink" title="properties格式"></a>properties格式</h3><p><img src="/deng123-dev.github.io/images/pasted-84.png" alt="upload successful"></p>
 <ul>
 <li>使用键值对进行书写  key=value</li>
 </ul>
 <p><img src="/deng123-dev.github.io/images/pasted-88.png" alt="upload successful"></p>
+<hr>
 <h3 id="YAML格式"><a href="#YAML格式" class="headerlink" title="YAML格式"></a>YAML格式</h3><ul>
 <li>大小写敏感</li>
 <li>使用缩进代表层次关系</li>
@@ -368,7 +383,9 @@
 <p><img src="/deng123-dev.github.io/images/pasted-87.png" alt="upload successful"></p>
 <p>正确写法：</p>
 <p><img src="/deng123-dev.github.io/images/pasted-86.png" alt="upload successful"></p>
-<h2 id="配置文件存放位置及加载顺序"><a href="#配置文件存放位置及加载顺序" class="headerlink" title="配置文件存放位置及加载顺序"></a>配置文件存放位置及加载顺序</h2><h3 id="配置文件存放位置"><a href="#配置文件存放位置" class="headerlink" title="配置文件存放位置"></a>配置文件存放位置</h3><ul>
+<hr>
+<h2 id="配置文件存放位置及加载顺序"><a href="#配置文件存放位置及加载顺序" class="headerlink" title="配置文件存放位置及加载顺序"></a>配置文件存放位置及加载顺序</h2><hr>
+<h3 id="配置文件存放位置"><a href="#配置文件存放位置" class="headerlink" title="配置文件存放位置"></a>配置文件存放位置</h3><ul>
 <li><p>当前项目的根目录下</p>
 </li>
 <li><p>当前项目根目录下的一个config子目录中</p>
@@ -378,16 +395,19 @@
 <li><p>项目的resource即classpath根目录下的config子目录下</p>
 </li>
 </ul>
+<hr>
 <h3 id="配置文件不同格式的加载顺序"><a href="#配置文件不同格式的加载顺序" class="headerlink" title="配置文件不同格式的加载顺序"></a>配置文件不同格式的加载顺序</h3><ul>
 <li><p>优先读取application.properties。</p>
 </li>
 <li><p>如果同一个配置属性，默认读取第一个，默认使用第一个读取到的，后面读取的不会覆盖第一个</p>
 </li>
 </ul>
+<hr>
 <h3 id="配置文件不同位置的加载顺序"><a href="#配置文件不同位置的加载顺序" class="headerlink" title="配置文件不同位置的加载顺序"></a>配置文件不同位置的加载顺序</h3><p> 优先级（从高到低）</p>
 <pre><code>根目录中的config子录-&gt;当前项目根目录-&gt;
 
-resource的config子目录-&gt;resource根目录</code></pre><h2 id="配置文件中的占位符"><a href="#配置文件中的占位符" class="headerlink" title="配置文件中的占位符"></a>配置文件中的占位符</h2><ol>
+resource的config子目录-&gt;resource根目录</code></pre><hr>
+<h2 id="配置文件中的占位符"><a href="#配置文件中的占位符" class="headerlink" title="配置文件中的占位符"></a>配置文件中的占位符</h2><ol>
 <li><p>语法：<br>${}</p>
 </li>
 <li><p>作用</p>
@@ -399,13 +419,17 @@ resource的config子目录-&gt;resource根目录</code></pre><h2 id="配置文�
 </ul>
 </li>
 </ol>
-<h2 id="bootstrap配置文件"><a href="#bootstrap配置文件" class="headerlink" title="bootstrap配置文件"></a>bootstrap配置文件</h2><h3 id="bootstrap配置文件介绍"><a href="#bootstrap配置文件介绍" class="headerlink" title="bootstrap配置文件介绍"></a>bootstrap配置文件介绍</h3><p> springboot中的两种上下文对象，分为bootstrap和application，bootstrap是应用程序的父上下文，也就是说bootstrap加载优先于application，bootstrap主要从额外的资源加载配置信息，<strong>它是任何spring应用程序外部属性的来源</strong>，bootstrap里面的属性会优先加载，它们默认也不能被本地相同配置覆盖</p>
+<hr>
+<h2 id="bootstrap配置文件"><a href="#bootstrap配置文件" class="headerlink" title="bootstrap配置文件"></a>bootstrap配置文件</h2><hr>
+<h3 id="bootstrap配置文件介绍"><a href="#bootstrap配置文件介绍" class="headerlink" title="bootstrap配置文件介绍"></a>bootstrap配置文件介绍</h3><p> springboot中的两种上下文对象，分为bootstrap和application，bootstrap是应用程序的父上下文，也就是说bootstrap加载优先于application，bootstrap主要从额外的资源加载配置信息，<strong>它是任何spring应用程序外部属性的来源</strong>，bootstrap里面的属性会优先加载，它们默认也不能被本地相同配置覆盖</p>
+<hr>
 <h3 id="bootstrap配置文件特征"><a href="#bootstrap配置文件特征" class="headerlink" title="bootstrap配置文件特征"></a>bootstrap配置文件特征</h3><ul>
 <li><p>bootstrap由父ApplicationContext加载，比application优先加载</p>
 </li>
 <li><p>bootstrap的属性不能被覆盖</p>
 </li>
 </ul>
+<hr>
 <h3 id="bootstrap和-application的应用场景"><a href="#bootstrap和-application的应用场景" class="headerlink" title="bootstrap和 application的应用场景"></a>bootstrap和 application的应用场景</h3><ol>
 <li><p>application主要用于springboot项目的自动化配置</p>
 </li>
@@ -420,6 +444,7 @@ resource的config子目录-&gt;resource根目录</code></pre><h2 id="配置文�
 </ul>
 </li>
 </ol>
+<hr>
 <h2 id="springboot核心注解"><a href="#springboot核心注解" class="headerlink" title="springboot核心注解"></a>springboot核心注解</h2><ol>
 <li><p>@SpringBootApplication</p>
 <p>springboot的启动类</p>
