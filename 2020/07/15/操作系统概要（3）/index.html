@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/deng123-dev.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/deng123-dev.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/deng123-dev.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/deng123-dev.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/deng123-dev.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/deng123-dev.github.io/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/deng123-dev.github.io/lib/pace/pace-theme-minimal.min.css">
+  <script src="/deng123-dev.github.io/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/deng123-dev.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="存储管理 存储层次">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统概要（3）:存储和文件管理">
+<meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81%EF%BC%883%EF%BC%89/index.html">
+<meta property="og:site_name" content="邓钧元的个人博客">
+<meta property="og:description" content="存储管理 存储层次">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-165.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-167.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-168.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-169.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-172.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-170.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-171.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-173.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-175.png">
+<meta property="article:published_time" content="2020-07-15T08:20:16.000Z">
+<meta property="article:modified_time" content="2020-07-16T14:02:07.107Z">
+<meta property="article:author" content="邓钧元的个人博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/deng123-dev.github.io/images/pasted-165.png">
+
+<link rel="canonical" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81%EF%BC%883%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>操作系统概要（3）:存储和文件管理 | 邓钧元的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/deng123-dev.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">邓钧元的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/deng123-dev.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/deng123-dev.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/deng123-dev.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/deng123-dev.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/deng123-dev.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81%EF%BC%883%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/deng123-dev.github.io/images/avatar.gif">
+      <meta itemprop="name" content="邓钧元的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓钧元的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统概要（3）:存储和文件管理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-15 16:20:16" itemprop="dateCreated datePublished" datetime="2020-07-15T16:20:16+08:00">2020-07-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-16 22:02:07" itemprop="dateModified" datetime="2020-07-16T22:02:07+08:00">2020-07-16</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="存储管理"><a href="#存储管理" class="headerlink" title="存储管理"></a>存储管理</h1><hr>
+<h2 id="存储层次"><a href="#存储层次" class="headerlink" title="存储层次"></a>存储层次</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-165.png" alt="upload successful"><br> <a id="more"></a></p>
+<h2 id="地址映射（地址重定位，地址变换）"><a href="#地址映射（地址重定位，地址变换）" class="headerlink" title="地址映射（地址重定位，地址变换）"></a>地址映射（地址重定位，地址变换）</h2><hr>
+<ul>
+<li><p>逻辑地址（相对地址，虚地址）</p>
+<p>用户的程序经过汇编或编译后形成目标代码，目标代码通常采用相对地址的形式，其首地址为0，其余指令中的地址都相对于首地址而编址，一个用户作业的目标程序的逻辑地址集合成为该作业的<strong>逻辑地址空间</strong></p>
+<p>不能用逻辑地址空间在内存中读取信息</p>
+</li>
+<li><p>物理地址（绝对地址，实地址）</p>
+<p>内存中的存储单元的实际内容，可直接寻址，<br>物理地址的总体构成了用户程序实际运行对的物理地址空间</p>
+<p>物理地址空间是由存储器地址总线扫描出来的<br>空间，其大小决定于实际安装的主存容量</p>
+</li>
+<li><p>地址映射（地址重定位，地址变换）</p>
+<p>为了保证CPU执行指令时可正确访问存储单元，<br>需将用户程序中的逻辑地址转换为运行时由机器<br>直接寻址的物理地址，这一过程称为<strong>地址映射</strong></p>
+<p>由于程序的<strong>逻辑地址与分配到的<br>内存物理地址不一致</strong>, 而CPU执行指令时，是按物理地址进行的，所以要进行地址转换</p>
+</li>
+</ul>
+<h2 id="重定位（地址映射方法）"><a href="#重定位（地址映射方法）" class="headerlink" title="重定位（地址映射方法）"></a>重定位（地址映射方法）</h2><hr>
+<p>   重定位：在<strong>可执行文件装入时</strong>需要解决可执行<br>   文件中地址（指令和数据）和内存地址的对 应。由操    作系统中的装入程序loader来完成。</p>
+<p>   重定位方法：</p>
+<ul>
+<li><p>绝对装入</p>
+<p>在可执行文件中记录内存地址，装入时<strong>直接定<br>位</strong>在上述(即文件中记录的地址)内存地址</p>
+</li>
+<li><p>可重定位装入</p>
+<p>列出各个需要重定位的地址单元和<br>相对地址值。当用户程序被装入内存时，一次性实现<br>逻辑地址到物理地址的转换</p>
+</li>
+<li><p>动态装入</p>
+<p>在可执行文件中记录虚拟内存地址，<strong>装入和执行时</strong>  装入和执行时通过硬件地址变换机构，完成虚拟地址到实际内存地址的变换。</p>
+</li>
+</ul>
+<h2 id="分区存储管理方案"><a href="#分区存储管理方案" class="headerlink" title="分区存储管理方案"></a>分区存储管理方案</h2><hr>
+<p>   系统把内存用户区划分为若干分区，一个进程占据一个分区</p>
+<p><img src="/deng123-dev.github.io/images/pasted-167.png" alt="upload successful">   </p>
+<ul>
+<li><p>固定分区</p>
+<p> 预先把可分配的内存空间分割成若干个连<br> 续区域，每一区域称为分区，分区大小固定不变，每个分区装一个且只能装一个作业</p>
+</li>
+<li><p>可变分区</p>
+<ul>
+<li><p>内存不是预先划分好的</p>
+</li>
+<li><p>作业装入时，根据作业的需求和内存空间的<br>使用情况来决定是否分配</p>
+</li>
+<li><p>若有足够的空间，则按需要分割一部分分区<br>给该进程；否则令其等待内存空间</p>
+</li>
+</ul>
+</li>
+<li><p>碎片问题</p>
+<p> 经过一段时间的分配回收后，内存中存<br> 在很多很小的空闲块。它们每一个都很<br> 小，不足以满足分配要求；但其总和满<br> 足分配要求。这些空闲块被称为碎片</p>
+<p> <strong>造成存储资源的浪费</strong></p>
+</li>
+</ul>
+<h2 id="页式存储管理方案"><a href="#页式存储管理方案" class="headerlink" title="页式存储管理方案"></a>页式存储管理方案</h2><hr>
+<ul>
+<li>基本思想</li>
+</ul>
+<p>  <strong>把用户程序按逻辑页划分成大小相等</strong>的部分，称为页。从0开始编制页号，页内地址是相对于0编址</p>
+<ul>
+<li>逻辑地址</li>
+</ul>
+<p><img src="/deng123-dev.github.io/images/pasted-168.png" alt="upload successful"></p>
+<ul>
+<li>如何管理</li>
+</ul>
+<p><img src="/deng123-dev.github.io/images/pasted-169.png" alt="upload successful"><br>  <strong>页表：系统为每个进程建立一个页表，页表给出逻辑页号和具体内存块号相应的关系，页表放在内存，属于进程的现场信息，逻辑上相邻的页，物理上不一定相邻</strong></p>
+<ul>
+<li><p>硬件支持</p>
+<ul>
+<li><p>页表始址寄存器</p>
+</li>
+<li><p>页表长度寄存器</p>
+</li>
+<li><p>TLB(相联存储器，俗称快表)</p>
+<ul>
+<li><p>引入快表的目的：<strong>为了提高地址映射速度</strong></p>
+</li>
+<li><p>用途：保存正在运行进程的页表的子集（部分表项）</p>
+</li>
+<li><p>特点：按内容并行查找    </p>
+<p><img src="/deng123-dev.github.io/images/pasted-172.png" alt="upload successful"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="段式存储管理方案"><a href="#段式存储管理方案" class="headerlink" title="段式存储管理方案"></a>段式存储管理方案</h2><hr>
+<ul>
+<li><p>基本思想 </p>
+<p>   <strong>按程序自身的逻辑关系</strong>划分为若干个程序<br>   段，每个程序段都有一个段名，且有一个<br>   段号</p>
+</li>
+<li><p>逻辑地址   </p>
+<p><img src="/deng123-dev.github.io/images/pasted-170.png" alt="upload successful"></p>
+</li>
+</ul>
+<ul>
+<li><p>如何管理</p>
+<p><img src="/deng123-dev.github.io/images/pasted-171.png" alt="upload successful"></p>
+</li>
+</ul>
+<p> <strong>段表：记录了段号，段的首（地）址和长度之间的关系每一个程序设置一个段表，放在内存属于进程的现场信息</strong></p>
+<p> <strong>注意：页式存储被划分到的内存空间是相等的，而段式存储是不相等的，而且内存随机分割，需要多少放多少</strong></p>
+<ul>
+<li><p>硬件支持</p>
+<ul>
+<li><p>页表始址寄存器</p>
+</li>
+<li><p>页表长度寄存器</p>
+</li>
+<li><p>TLB(相联存储器，俗称快表)</p>
+<p><img src="/deng123-dev.github.io/images/pasted-173.png" alt="upload successful"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="交换技术和覆盖技术"><a href="#交换技术和覆盖技术" class="headerlink" title="交换技术和覆盖技术"></a>交换技术和覆盖技术</h2><hr>
+<ul>
+<li><p>为什么引入</p>
+<p>在多道环境下扩充内存的方法，用以解决在较小的存储空间中运行较大程序时遇到     的矛盾</p>
+</li>
+<li><p>交换技术和覆盖技术的共同点 </p>
+<p>进程的程序和数据主要放在外存，当前<br>需要执行的部分放在内存，内外存之间<br>进行信息交换</p>
+</li>
+</ul>
+<h3 id="覆盖技术"><a href="#覆盖技术" class="headerlink" title="覆盖技术"></a>覆盖技术</h3><hr>
+<p>  基本思想：<strong>把程序划分为若干个功能上相对独立的程序段，按照其自身的逻辑结构将那些不会同时执行的程序段共享同一块内存区域</strong><br>   <img src="/deng123-dev.github.io/images/pasted-175.png" alt="upload successful"></p>
+<h3 id="交换技术"><a href="#交换技术" class="headerlink" title="交换技术"></a>交换技术</h3><hr>
+<ol>
+<li><p>为什么引入</p>
+<p>当内存空间紧张时，系统将内存中某些进程暂时移到外存，把外存中某些进程换进内存，占据前者所占用的区域，这种技术是<strong>进程在内存与外存之间的动态调度</strong></p>
+</li>
+<li><p>交换技术和覆盖技术的不同点 </p>
+<p>与覆盖技术相比，交换技术不要求用户给出程<br>序段之间的逻辑覆盖结构；而且，交换发生在<br> 进程或作业之间，而覆盖发生在同一进程或作<br> 业内。此外，覆盖只能覆盖那些与覆盖段无关<br> 的程序段   </p>
+</li>
+</ol>
+<h2 id="虚拟存储"><a href="#虚拟存储" class="headerlink" title="虚拟存储"></a>虚拟存储</h2><hr>
+<p>   以CPU时间和外存空间换取昂贵内存空间，这是操作系统中的<strong>资源转换技术</strong></p>
+<ul>
+<li><p>基本思想</p>
+<p>操作系统把程序当前使用的部分保留在内存，而把其它部分保存在磁盘上，并在需要时在内存和磁盘之间动态交换</p>
+</li>
+<li><p>目的</p>
+<p>提高内存利用率</p>
+</li>
+</ul>
+<h2 id="程序局部性原理"><a href="#程序局部性原理" class="headerlink" title="程序局部性原理"></a>程序局部性原理</h2><hr>
+<ul>
+<li><p>时间局部性</p>
+<p>  一条指令被执行了，在不久的将来它可能再被执行</p>
+</li>
+<li><p>空间局部性</p>
+<p>  若某一存储单元被使用，则在一定时间内，与<br>  该存储单元相邻的单元可能被使用</p>
+</li>
+</ul>
+<h2 id="缺页中断（Page-Fault）处理"><a href="#缺页中断（Page-Fault）处理" class="headerlink" title="缺页中断（Page Fault）处理"></a>缺页中断（Page Fault）处理</h2><hr>
+<p>在地址映射过程中，在页表中发现所要访问的 页不在内存，则产生缺页中断。操作系统接到 此中断信号后，就调出缺页中断处理程序，根据页表中给出的外存地址，将该页调入内存，使作业继续运行下去</p>
+<h2 id="页面淘汰算法"><a href="#页面淘汰算法" class="headerlink" title="页面淘汰算法"></a>页面淘汰算法</h2><hr>
+<ul>
+<li>最近未使用页面淘汰算法（NRU——Not Recently Used）</li>
+</ul>
+<p>选择在最近一段时间内未使用过的一页并淘汰之</p>
+<ul>
+<li>先进先出页面淘汰算法（FIFO）</li>
+</ul>
+<p>选择在内存中驻留时间最长的页并淘汰之</p>
+<ul>
+<li>最近最少使用页面淘汰算法（LRU——Least Recently Used）</li>
+</ul>
+<p>选择最后一次访问时间距离当前时间最长的一页并淘汰之</p>
+<h2 id="影响缺页次数的因素"><a href="#影响缺页次数的因素" class="headerlink" title="影响缺页次数的因素"></a>影响缺页次数的因素</h2><hr>
+<ul>
+<li>进程的物理页面数</li>
+<li>页面本身的大小</li>
+<li>程序的编制方法</li>
+<li>页面淘汰算法</li>
+</ul>
+<h1 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h1><ol>
+<li>文件的逻辑结构</li>
+</ol>
+<ul>
+<li><p>有结构文件指的是一个以及以上的记录构成的文件，故又把它称为<strong>记录式文件</strong></p>
+</li>
+<li><p>无结构文件是指字符流构成的文件，故又称为<strong>流式文件</strong></p>
+</li>
+</ul>
+<ol start="2">
+<li>文件存取</li>
+</ol>
+<p>通常由三种文件存取方法：<code>顺序存取法</code>、<code>直接存取法</code>和<code>按键存取法（索引存取法）</code>。文件存取法与文件的物理结构有关。</p>
+<ol start="3">
+<li>文件控制块</li>
+</ol>
+<p>为了能对一个文件进行正确的存取，操作系统必须为文件设置用于描述和控制文件的数据结构，称之为“文件控制块（FCB）</p>
+<ol start="4">
+<li>文件目录</li>
+</ol>
+<p>文件目录是指：为实现“按名存取”，必须建立文件名与辅存空间中物理地址的对应关系</p>
+<ol start="5">
+<li><p>文件的物理结构</p>
+<ul>
+<li><p>顺序结构</p>
+</li>
+<li><p>连接结构</p>
+</li>
+<li><p>索引结构</p>
+</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2020/07/12/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81%EF%BC%882%EF%BC%89/" rel="prev" title="操作系统概要（2）：进程与线程">
+      <i class="fa fa-chevron-left"></i> 操作系统概要（2）：进程与线程
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#存储管理"><span class="nav-number">1.</span> <span class="nav-text">存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储层次"><span class="nav-number">1.1.</span> <span class="nav-text">存储层次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地址映射（地址重定位，地址变换）"><span class="nav-number">1.2.</span> <span class="nav-text">地址映射（地址重定位，地址变换）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重定位（地址映射方法）"><span class="nav-number">1.3.</span> <span class="nav-text">重定位（地址映射方法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分区存储管理方案"><span class="nav-number">1.4.</span> <span class="nav-text">分区存储管理方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页式存储管理方案"><span class="nav-number">1.5.</span> <span class="nav-text">页式存储管理方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#段式存储管理方案"><span class="nav-number">1.6.</span> <span class="nav-text">段式存储管理方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交换技术和覆盖技术"><span class="nav-number">1.7.</span> <span class="nav-text">交换技术和覆盖技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖技术"><span class="nav-number">1.7.1.</span> <span class="nav-text">覆盖技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换技术"><span class="nav-number">1.7.2.</span> <span class="nav-text">交换技术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟存储"><span class="nav-number">1.8.</span> <span class="nav-text">虚拟存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序局部性原理"><span class="nav-number">1.9.</span> <span class="nav-text">程序局部性原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺页中断（Page-Fault）处理"><span class="nav-number">1.10.</span> <span class="nav-text">缺页中断（Page Fault）处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面淘汰算法"><span class="nav-number">1.11.</span> <span class="nav-text">页面淘汰算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#影响缺页次数的因素"><span class="nav-number">1.12.</span> <span class="nav-text">影响缺页次数的因素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件管理"><span class="nav-number">2.</span> <span class="nav-text">文件管理</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">邓钧元的个人博客</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/deng123-dev.github.io/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/deng123-dev.github.io/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/deng123-dev.github.io/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">邓钧元的个人博客</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/deng123-dev.github.io/lib/anime.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/deng123-dev.github.io/js/utils.js"></script>
+
+<script src="/deng123-dev.github.io/js/motion.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/deng123-dev.github.io/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
