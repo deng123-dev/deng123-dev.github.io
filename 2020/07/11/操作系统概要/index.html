@@ -30,10 +30,11 @@
 <meta property="og:description" content="操作系统概述  操作系统的定义： 是一组主管并控制计算机操作，运行和管理硬件，软件资源和提供公共服务来组织用户交互的相互关联的系统软件程序">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-156.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-176.png">
 <meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-159.png">
 <meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-158.png">
 <meta property="article:published_time" content="2020-07-11T03:26:56.000Z">
-<meta property="article:modified_time" content="2020-07-13T13:17:39.794Z">
+<meta property="article:modified_time" content="2020-07-19T14:32:56.282Z">
 <meta property="article:author" content="邓钧元的个人博客">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://github.com/deng123-dev.github.io/images/pasted-156.png">
@@ -229,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-13 21:17:39" itemprop="dateModified" datetime="2020-07-13T21:17:39+08:00">2020-07-13</time>
+                <time title="Modified: 2020-07-19 22:32:56" itemprop="dateModified" datetime="2020-07-19T22:32:56+08:00">2020-07-19</time>
               </span>
 
           
@@ -256,9 +257,9 @@
 <p>是一组主管并控制计算机操作，运行和管理硬件，软件资源和提供公共服务来组织用户交互的相互关联的系统软件程序</p>
 <a id="more"></a> </li>
 <li><p>操作系统在计算机系统中的位置：</p>
+<p>  <strong>内核和基石</strong></p>
 </li>
 </ol>
-<p>内核和基石</p>
 <ol start="3">
 <li><p>操作系统的特征</p>
 <ul>
@@ -384,7 +385,11 @@
 <h3 id="中断响应"><a href="#中断响应" class="headerlink" title="中断响应"></a>中断响应</h3><hr>
 <p> 中断响应：发现中断，接收中断的过程，由中断装置完成</p>
 <p> 中断响应的处理过程：<br><img src="/deng123-dev.github.io/images/pasted-156.png" alt="upload successful"></p>
+<p>  （1） 在每条指令执行周期的最后时刻扫描中断寄存器，询问是否有中断信号</p>
+<p>  （2） 若无中断信号，继续执行下一条指令</p>
+<p>  （3） 若有中断，中断硬件将该中断触发器内容按规定编码送入PSW的相应位，称为中断码，通过交换中断向量引出中断处理程序</p>
 <h3 id="中断处理"><a href="#中断处理" class="headerlink" title="中断处理"></a>中断处理</h3><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-176.png" alt="upload successful"></p>
 <p> （1）设备给处理器发一个中断信号</p>
 <p> （2）处理器处理完当前指令后响应中断</p>
 <p> （3）处理器处理完当前指令后检测到中断，判断出中断来源并向发送中断的设备发送了确认中断信号</p>
