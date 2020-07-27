@@ -22,24 +22,22 @@
     var CONFIG = {"hostname":"github.com","root":"/deng123-dev.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="操作系统概述  操作系统的定义： 是一组主管并控制计算机操作，运行和管理硬件，软件资源和提供公共服务来组织用户交互的相互关联的系统软件程序">
+  <meta name="description" content="删除最外层的括号 题目描述">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统概要（1）：系统机制">
-<meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81/index.html">
+<meta property="og:title" content="leetcode知识总结（2）">
+<meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/26/leetcode%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%882%EF%BC%89/index.html">
 <meta property="og:site_name" content="邓钧元的个人博客">
-<meta property="og:description" content="操作系统概述  操作系统的定义： 是一组主管并控制计算机操作，运行和管理硬件，软件资源和提供公共服务来组织用户交互的相互关联的系统软件程序">
+<meta property="og:description" content="删除最外层的括号 题目描述">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-156.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-176.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-159.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-158.png">
-<meta property="article:published_time" content="2020-07-11T03:26:56.000Z">
-<meta property="article:modified_time" content="2020-07-19T14:32:56.282Z">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-178.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-179.png">
+<meta property="article:published_time" content="2020-07-26T13:20:23.000Z">
+<meta property="article:modified_time" content="2020-07-27T14:37:19.758Z">
 <meta property="article:author" content="邓钧元的个人博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/deng123-dev.github.io/images/pasted-156.png">
+<meta name="twitter:image" content="https://github.com/deng123-dev.github.io/images/pasted-178.png">
 
-<link rel="canonical" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81/">
+<link rel="canonical" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/26/leetcode%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%882%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -52,7 +50,7 @@
   };
 </script>
 
-  <title>操作系统概要（1）：系统机制 | 邓钧元的个人博客</title>
+  <title>leetcode知识总结（2） | 邓钧元的个人博客</title>
   
 
 
@@ -200,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/26/leetcode%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%882%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/deng123-dev.github.io/images/avatar.gif">
@@ -213,7 +211,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          操作系统概要（1）：系统机制
+          leetcode知识总结（2）
         </h1>
 
         <div class="post-meta">
@@ -223,14 +221,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-07-11 11:26:56" itemprop="dateCreated datePublished" datetime="2020-07-11T11:26:56+08:00">2020-07-11</time>
+              <time title="Created: 2020-07-26 21:20:23" itemprop="dateCreated datePublished" datetime="2020-07-26T21:20:23+08:00">2020-07-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-19 22:32:56" itemprop="dateModified" datetime="2020-07-19T22:32:56+08:00">2020-07-19</time>
+                <time title="Modified: 2020-07-27 22:37:19" itemprop="dateModified" datetime="2020-07-27T22:37:19+08:00">2020-07-27</time>
               </span>
 
           
@@ -251,187 +249,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="操作系统概述"><a href="#操作系统概述" class="headerlink" title="操作系统概述"></a>操作系统概述</h1><hr>
-<ol>
-<li><p>操作系统的定义：</p>
-<p>是一组主管并控制计算机操作，运行和管理硬件，软件资源和提供公共服务来组织用户交互的相互关联的系统软件程序</p>
-<a id="more"></a> </li>
-<li><p>操作系统在计算机系统中的位置：</p>
-<p>  <strong>内核和基石</strong></p>
-</li>
-</ol>
-<ol start="3">
-<li><p>操作系统的特征</p>
+        <h1 id="删除最外层的括号"><a href="#删除最外层的括号" class="headerlink" title="删除最外层的括号"></a>删除最外层的括号</h1><hr>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-178.png" alt="upload successful"></p>
+<a id="more"></a>
+<h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class solution&#123;</span><br><span class="line">  public String removeOuterParentheses(String S) &#123;</span><br><span class="line">  StringBuilder s&#x3D;new StringBuilder ();</span><br><span class="line">  int level&#x3D;0;</span><br><span class="line">  for(char c:S.toCharArray())&#123;</span><br><span class="line">  if(c&#x3D;&#x3D;&#39;)&#39;)  --level;</span><br><span class="line">  if(level&gt;0) s.append(c);</span><br><span class="line">  if(c&#x3D;&#x3D;&#39;(&#39;)  ++level;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路和知识"><a href="#解题思路和知识" class="headerlink" title="解题思路和知识"></a>解题思路和知识</h2><hr>
 <ul>
-<li><p>并发：而并发性是指两个或者多个事件在同一时间的间隔内发生</p>
+<li><p>解题思路</p>
+<p>代码的主要思想是先建立一个可变字符序列，设置一个层次变量表示这是内嵌第几层（level=0表示是最外层的括号）的括号，字符串中的每个字符都要经历判断，如果是外层的括号（即是题目指的原语的最外层括号），则不输入进入字符序列</p>
 </li>
-<li><p>共享：系统中的资源可供内存中多个并发执行的进程共同使用</p>
-</li>
-<li><p>虚拟：把物理实体变成逻辑上的对应物</p>
-</li>
-<li><p>异步：在多道程序运行环境，由于资源有限，程序的运行并不是一气呵成的，下多个进程并发执行是以“走走停停”的方式进行的，以不可知的速度运行下去的</p>
+<li><p>知识总结</p>
+<p>StringBuilder和StringBuffer是String类的同伴类。它们表示一个可变的字符序列。   StringBuffer是线程安全的，StringBuilder不是线程安全的。</p>
 </li>
 </ul>
-</li>
-</ol>
-<ol start="4">
-<li><p>理解操作系统的不同角度</p>
-<ul>
-<li><p>作为软件来看</p>
-</li>
-<li><p>资源管理的观点</p>
-</li>
-<li><p>进程的观点</p>
-</li>
-<li><p>虚拟机观点</p>
-</li>
-<li><p>服务提供者观点</p>
+<h1 id="删除字符串的所有相邻重复项"><a href="#删除字符串的所有相邻重复项" class="headerlink" title="删除字符串的所有相邻重复项"></a>删除字符串的所有相邻重复项</h1><hr>
+<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-179.png" alt="upload successful"></p>
+<h2 id="编写代码-1"><a href="#编写代码-1" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String removeDuplicates(String S) &#123;</span><br><span class="line">    Stack&lt;Character&gt; s&#x3D;new Stack&lt;Character&gt;();   </span><br><span class="line">    for(char c:S.toCharArray())&#123;</span><br><span class="line"></span><br><span class="line">        if(s.isEmpty()||c!&#x3D;s.peek()) </span><br><span class="line">         s.push(c);               </span><br><span class="line">        else s.pop();              </span><br><span class="line">                             </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   StringBuilder a&#x3D;new StringBuilder();</span><br><span class="line">   for(char c:s)&#123;</span><br><span class="line">    a.append(c);</span><br><span class="line">   &#125;</span><br><span class="line">   return a.toString();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路和知识-1"><a href="#解题思路和知识-1" class="headerlink" title="解题思路和知识"></a>解题思路和知识</h2><ul>
+<li><p>解题思路</p>
+<p> 这题很简单，建立一个栈，将数据存进去，如果存入数据与栈顶元素相同，则将栈顶元素出栈，反之则将数据进栈，最后输出即可</p>
 </li>
 </ul>
-</li>
-<li><p>操作系统向不同用户提供的不同接口</p>
-<ul>
-<li><p>系统命令：供用户用于组织和控制自己的作业运行。命令行，菜单式，GUI命令脚本</p>
-</li>
-<li><p>编程接口：供用户程序和系统程序调用操作系统的功能。系统调用和高基语言库函数</p>
-</li>
-</ul>
-</li>
-</ol>
-<h1 id="系统机制"><a href="#系统机制" class="headerlink" title="系统机制"></a>系统机制</h1><hr>
-<h2 id="cpu的工作模式和工作状态"><a href="#cpu的工作模式和工作状态" class="headerlink" title="cpu的工作模式和工作状态"></a>cpu的工作模式和工作状态</h2><hr>
-<ol>
-<li><p>cpu不同的工作模式</p>
-<ul>
-<li><p>实模式</p>
-</li>
-<li><p>保护模式 </p>
-</li>
-<li><p>系统管理模式</p>
-</li>
-</ul>
-</li>
-<li><p>管态：操作系统管理程序运行的状态，能执行指令全集，改变cpu状态的能力</p>
-</li>
-<li><p>目态：用户程序运行的状态，如果在目态下用户执行管态指令就会被中断</p>
-</li>
-</ol>
-<h2 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h2><hr>
-<h3 id="中断概念："><a href="#中断概念：" class="headerlink" title="中断概念："></a>中断概念：</h3><hr>
-<p> cpu对于系统发生的某个事件做出的一些反应</p>
-<p>  cpu暂停正在执行的程序，保留现场后自动转取执行相应事件的处理程序，处理完<br>成后返回断点，继续执行被打断的程序 </p>
-<ul>
-<li><p>事件：异步/同步事件</p>
-</li>
-<li><p>特点：随即发生的，可恢复的，自动处理的</p>
-</li>
-</ul>
-<p>中断和异常的类型：</p>
-<table>
-<thead>
-<tr>
-<th>中断</th>
-<th>异常</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>I/O中断</td>
-<td>系统调用</td>
-</tr>
-<tr>
-<td>时钟中断</td>
-<td>缺页异常</td>
-</tr>
-<tr>
-<td>硬件故障</td>
-<td>断点指令</td>
-</tr>
-<tr>
-<td>程序性中断</td>
-<td>其他程序性异常</td>
-</tr>
-</tbody></table>
-<p>中断和异常的区别：      </p>
-<p> 中断：和正执行指令无关，可以屏蔽</p>
-<p> 异常：与正执行指令有关，不可屏蔽</p>
-<h3 id="中断系统"><a href="#中断系统" class="headerlink" title="中断系统"></a>中断系统</h3><hr>
-<ol>
-<li><p>中断系统的两大组成部分</p>
-<ul>
-<li><p>硬件中断装置</p>
-</li>
-<li><p>软件中断处理程序</p>
-</li>
-</ul>
-</li>
-<li><p>相关概念</p>
-<ul>
-<li><p>中断源：引起中断发生的事件</p>
-</li>
-<li><p>中断寄存器： 记录中断</p>
-</li>
-<li><p>中断字：中断寄存器中的内容</p>
-</li>
-<li><p>系统堆栈：在内存开辟的一块用于临时保存现场</p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="中断优先级和中断屏蔽"><a href="#中断优先级和中断屏蔽" class="headerlink" title="中断优先级和中断屏蔽"></a>中断优先级和中断屏蔽</h3><hr>
-<p> 处理机优先级：</p>
-<p> 指出处理机正运行程序的中断响应级别。只允许处理机去响应比该优先级高的中断,而屏蔽低于或等于该优先级的中断</p>
-<p> 中断屏蔽：</p>
-<p> 指禁止CPU响应中断或禁止中断出现</p>
-<h3 id="中断响应"><a href="#中断响应" class="headerlink" title="中断响应"></a>中断响应</h3><hr>
-<p> 中断响应：发现中断，接收中断的过程，由中断装置完成</p>
-<p> 中断响应的处理过程：<br><img src="/deng123-dev.github.io/images/pasted-156.png" alt="upload successful"></p>
-<p>  （1） 在每条指令执行周期的最后时刻扫描中断寄存器，询问是否有中断信号</p>
-<p>  （2） 若无中断信号，继续执行下一条指令</p>
-<p>  （3） 若有中断，中断硬件将该中断触发器内容按规定编码送入PSW的相应位，称为中断码，通过交换中断向量引出中断处理程序</p>
-<h3 id="中断处理"><a href="#中断处理" class="headerlink" title="中断处理"></a>中断处理</h3><hr>
-<p><img src="/deng123-dev.github.io/images/pasted-176.png" alt="upload successful"></p>
-<p> （1）设备给处理器发一个中断信号</p>
-<p> （2）处理器处理完当前指令后响应中断</p>
-<p> （3）处理器处理完当前指令后检测到中断，判断出中断来源并向发送中断的设备发送了确认中断信号</p>
-<p> （4）处理器开始为软件处理中断做准备</p>
-<p> （5）处理器根据中断源查询中断向量表，获得与该中断相联系的处理程序入口地址。</p>
-<p> （6）中断处理程序开始工作</p>
-<p> （7）中断处理结束时，处理器检测到中断返回指令</p>
-<p> （8）PSW和PC恢复成中断前的值</p>
-<h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><hr>
-<ol>
-<li><p>系统调用概述 </p>
-<p>系统调用：用户在程序中调用操作系统提供的一些子功能</p>
-<ul>
-<li><p>一种特殊的过程调用，由特殊的机器指令实现</p>
-</li>
-<li><p>系统调用时操作系统提供给编程人员的唯一接口</p>
-</li>
-<li><p>系统从目态转入管态</p>
-</li>
-<li><p>系统调用是一个低级过程，只能由汇编语言访问</p>
-</li>
-<li><p>利用系统调用，动态请求和释放系统资源</p>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="2">
-<li>系统调用的处理过程</li>
-</ol>
-<p><img src="/deng123-dev.github.io/images/pasted-159.png" alt="upload successful"><br><img src="/deng123-dev.github.io/images/pasted-158.png" alt="upload successful"></p>
-<ol start="3">
-<li><p>系统调用参数传递</p>
-<ul>
-<li><p>由陷入指令自带参数</p>
-</li>
-<li><p>通过通用寄存器传递参数</p>
-</li>
-<li><p>在内存中开辟专用堆栈区传递参数</p>
-</li>
-</ul>
-</li>
-</ol>
 
     </div>
 
@@ -447,13 +291,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/deng123-dev.github.io/2020/07/06/leetcode-%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" rel="prev" title="leetcode 知识总结">
-      <i class="fa fa-chevron-left"></i> leetcode 知识总结
+    <a href="/deng123-dev.github.io/2020/07/06/leetcode-%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%881%EF%BC%89/" rel="prev" title="leetcode 知识总结（1）">
+      <i class="fa fa-chevron-left"></i> leetcode 知识总结（1）
     </a></div>
-      <div class="post-nav-item">
-    <a href="/deng123-dev.github.io/2020/07/12/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81%EF%BC%882%EF%BC%89/" rel="next" title="操作系统概要（2）：进程与线程">
-      操作系统概要（2）：进程与线程 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -512,7 +353,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#操作系统概述"><span class="nav-number">1.</span> <span class="nav-text">操作系统概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统机制"><span class="nav-number">2.</span> <span class="nav-text">系统机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cpu的工作模式和工作状态"><span class="nav-number">2.1.</span> <span class="nav-text">cpu的工作模式和工作状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中断和异常"><span class="nav-number">2.2.</span> <span class="nav-text">中断和异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中断概念："><span class="nav-number">2.2.1.</span> <span class="nav-text">中断概念：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断系统"><span class="nav-number">2.2.2.</span> <span class="nav-text">中断系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断优先级和中断屏蔽"><span class="nav-number">2.2.3.</span> <span class="nav-text">中断优先级和中断屏蔽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断响应"><span class="nav-number">2.2.4.</span> <span class="nav-text">中断响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断处理"><span class="nav-number">2.2.5.</span> <span class="nav-text">中断处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统调用"><span class="nav-number">2.3.</span> <span class="nav-text">系统调用</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#删除最外层的括号"><span class="nav-number">1.</span> <span class="nav-text">删除最外层的括号</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码"><span class="nav-number">1.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识"><span class="nav-number">1.3.</span> <span class="nav-text">解题思路和知识</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除字符串的所有相邻重复项"><span class="nav-number">2.</span> <span class="nav-text">删除字符串的所有相邻重复项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码-1"><span class="nav-number">2.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识-1"><span class="nav-number">2.3.</span> <span class="nav-text">解题思路和知识</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -526,7 +367,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/deng123-dev.github.io/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
