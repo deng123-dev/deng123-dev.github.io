@@ -5,48 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/deng123-dev.github.io/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/deng123-dev.github.io/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/deng123-dev.github.io/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/deng123-dev.github.io/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/deng123-dev.gitee.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/deng123-dev.gitee.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/deng123-dev.gitee.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/deng123-dev.gitee.io/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/deng123-dev.github.io/css/main.css">
+<link rel="stylesheet" href="/deng123-dev.gitee.io/css/main.css">
 
 
-<link rel="stylesheet" href="/deng123-dev.github.io/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/deng123-dev.github.io/lib/pace/pace-theme-minimal.min.css">
-  <script src="/deng123-dev.github.io/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/deng123-dev.gitee.io/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/deng123-dev.gitee.io/lib/pace/pace-theme-minimal.min.css">
+  <script src="/deng123-dev.gitee.io/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"github.com","root":"/deng123-dev.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"gitee.com","root":"/deng123-dev.gitee.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="有效的括号tags: 栈  问题描述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 知识总结（1）">
-<meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/06/leetcode-%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:url" content="https://gitee.com/deng123-dev/deng123-dev/2020/07/06/leetcode-%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%881%EF%BC%89/index.html">
 <meta property="og:site_name" content="邓钧元的个人博客">
 <meta property="og:description" content="有效的括号tags: 栈  问题描述">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-151.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-147.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-149.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-150.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-152.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-153.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-154.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-155.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-161.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-164.png">
-<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-177.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-151.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-147.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-149.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-152.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-153.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-154.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-155.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-161.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-164.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-177.png">
 <meta property="article:published_time" content="2020-07-06T03:20:20.000Z">
-<meta property="article:modified_time" content="2020-08-03T13:05:51.327Z">
+<meta property="article:modified_time" content="2020-10-27T13:56:37.740Z">
 <meta property="article:author" content="邓钧元的个人博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/deng123-dev.github.io/images/pasted-151.png">
+<meta name="twitter:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-151.png">
 
-<link rel="canonical" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/06/leetcode-%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%881%EF%BC%89/">
+<link rel="canonical" href="https://gitee.com/deng123-dev/deng123-dev/2020/07/06/leetcode-%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%881%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -108,7 +107,7 @@
 
   <div class="site-meta">
 
-    <a href="/deng123-dev.github.io/" class="brand" rel="start">
+    <a href="/deng123-dev.gitee.io/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">邓钧元的个人博客</h1>
       <span class="logo-line-after"><i></i></span>
@@ -129,27 +128,27 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/deng123-dev.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+    <a href="/deng123-dev.gitee.io/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/deng123-dev.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+    <a href="/deng123-dev.gitee.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/deng123-dev.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+    <a href="/deng123-dev.gitee.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/deng123-dev.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+    <a href="/deng123-dev.gitee.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/deng123-dev.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+    <a href="/deng123-dev.gitee.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -207,10 +206,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/07/06/leetcode-%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%881%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://gitee.com/deng123-dev/deng123-dev/2020/07/06/leetcode-%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%881%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/deng123-dev.github.io/images/avatar.gif">
+      <meta itemprop="image" content="/deng123-dev.gitee.io/images/avatar.gif">
       <meta itemprop="name" content="邓钧元的个人博客">
       <meta itemprop="description" content="">
     </span>
@@ -237,7 +236,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-03 21:05:51" itemprop="dateModified" datetime="2020-08-03T21:05:51+08:00">2020-08-03</time>
+                <time title="Modified: 2020-10-27 21:56:37" itemprop="dateModified" datetime="2020-10-27T21:56:37+08:00">2020-10-27</time>
               </span>
 
           
@@ -296,23 +295,12 @@
 <p><img src="/deng123-dev.github.io/images/pasted-149.png" alt="upload successful"></p>
 <h2 id="编写代码-1"><a href="#编写代码-1" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
 <p>JAVA代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Minstack&#123;</span><br><span class="line">private Stack&lt;Integer&gt; datastack;</span><br><span class="line">private Stack&lt;Integer&gt; minstack;</span><br><span class="line"></span><br><span class="line">public Minstack()&#123;</span><br><span class="line">datastack&#x3D;new Stack&lt;&gt;();</span><br><span class="line">minstack&#x3D;new Stack&lt;&gt;();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void push(int x)&#123;</span><br><span class="line">datastack.push(x);</span><br><span class="line">if(minstack.isEmpty()||x&lt;&#x3D;minstack().peek())</span><br><span class="line">minstack.push(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void pop()&#123;</span><br><span class="line">int x&#x3D;datastack.peek();</span><br><span class="line">if(x&#x3D;&#x3D;minstack.peek())</span><br><span class="line">minstack.pop();</span><br><span class="line">datastack.pop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public getmin()&#123;</span><br><span class="line"></span><br><span class="line">return minstack.peek();</span><br><span class="line">&#125;</span><br><span class="line">public gettop()&#123;</span><br><span class="line"></span><br><span class="line">return datastack.peek();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class MinStack &#123;</span><br><span class="line">    </span><br><span class="line">    private int min &#x3D; Integer.MAX_VALUE;</span><br><span class="line">    private Stack&lt;Integer&gt; stack;</span><br><span class="line">    &#x2F;** initialize your data structure here. *&#x2F;</span><br><span class="line">    public MinStack() &#123;</span><br><span class="line">        stack &#x3D; new Stack&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void push(int x) &#123;</span><br><span class="line">        if(min &gt;&#x3D; x)&#123;</span><br><span class="line">            stack.push(min);</span><br><span class="line">            min &#x3D; x;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void pop() &#123;</span><br><span class="line">        if(stack.pop() &#x3D;&#x3D; min)&#123;</span><br><span class="line">            min &#x3D; stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int top() &#123;</span><br><span class="line">      return stack.peek();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getMin() &#123;</span><br><span class="line">        return min;</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="解题思路和知识总结-1"><a href="#解题思路和知识总结-1" class="headerlink" title="解题思路和知识总结"></a>解题思路和知识总结</h2><hr>
 <ul>
 <li><p>解题思路 </p>
-<ul>
-<li><p>出栈操作： 如果数据栈当中的值等于最小栈栈顶值时（即判断当前数据栈出栈元素是否时最小值时），就把最小栈的栈顶元素出栈，然后再把数据栈的栈顶元素出栈。</p>
+<p>定义一个最小值min。<br>入栈时：向栈中压入一个元素时，将它与min作比较，如果比min小，就先将min的值压入栈中，然后将元素的值赋给min<br>出栈时：栈顶元素和min作比较，如果相等，将元素出栈后再将其赋给min</p>
 </li>
-<li><p>入栈操作：先把元素放入数据栈，再将元素和最小栈的栈顶元素作比较，如果元素小于或等于栈顶元素，则入栈。</p>
-</li>
-<li><p>取最小元素：直接取最小站栈顶元素即可</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/deng123-dev.github.io/images/pasted-150.png" alt="upload successful"></p>
-<p>在我的角度看来是一个<strong>空间换时间</strong>的算法，因为如果用stack里面的查找最小值的方法需要将栈从头到尾进行比较，这样增大了计算量，而最小栈的思想是在原有的数据栈之外建立一个新的最小栈，它的栈顶存放数据栈的最小的元素，当有元素出栈或者入栈的时候只需要和最小栈的栈顶元素作比较；</p>
-<ul>
 <li><p>知识总结（栈的基本操作）</p>
 <ul>
 <li><p>创建栈：private Stack<Integer> datastack;</p>
@@ -449,11 +437,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/deng123-dev.github.io/2020/06/04/springboot%EF%BC%884%EF%BC%89/" rel="prev" title="springboot（4）">
+    <a href="/deng123-dev.gitee.io/2020/06/04/springboot%EF%BC%884%EF%BC%89/" rel="prev" title="springboot（4）">
       <i class="fa fa-chevron-left"></i> springboot（4）
     </a></div>
       <div class="post-nav-item">
-    <a href="/deng123-dev.github.io/2020/07/26/leetcode%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%882%EF%BC%89/" rel="next" title="leetcode知识总结（2）">
+    <a href="/deng123-dev.gitee.io/2020/07/26/leetcode%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%882%EF%BC%89/" rel="next" title="leetcode知识总结（2）">
       leetcode知识总结（2） <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -526,20 +514,20 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/deng123-dev.github.io/archives/">
+          <a href="/deng123-dev.gitee.io/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/deng123-dev.github.io/categories/">
+            <a href="/deng123-dev.gitee.io/categories/">
           
         <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/deng123-dev.github.io/tags/">
+            <a href="/deng123-dev.gitee.io/tags/">
           
         <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
@@ -611,30 +599,30 @@
   </div>
 
   
-  <script src="/deng123-dev.github.io/lib/anime.min.js"></script>
-  <script src="/deng123-dev.github.io/lib/velocity/velocity.min.js"></script>
-  <script src="/deng123-dev.github.io/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/deng123-dev.gitee.io/lib/anime.min.js"></script>
+  <script src="/deng123-dev.gitee.io/lib/velocity/velocity.min.js"></script>
+  <script src="/deng123-dev.gitee.io/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/deng123-dev.github.io/js/utils.js"></script>
+<script src="/deng123-dev.gitee.io/js/utils.js"></script>
 
-<script src="/deng123-dev.github.io/js/motion.js"></script>
-
-
-<script src="/deng123-dev.github.io/js/schemes/pisces.js"></script>
+<script src="/deng123-dev.gitee.io/js/motion.js"></script>
 
 
-<script src="/deng123-dev.github.io/js/next-boot.js"></script>
+<script src="/deng123-dev.gitee.io/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/deng123-dev.gitee.io/js/next-boot.js"></script>
 
 
 
 
   
-<script src="/deng123-dev.github.io/js/local-search.js"></script>
+
+
+
+
+  
+<script src="/deng123-dev.gitee.io/js/local-search.js"></script>
 
 
 

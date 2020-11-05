@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/deng123-dev.gitee.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/deng123-dev.gitee.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/deng123-dev.gitee.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/deng123-dev.gitee.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/deng123-dev.gitee.io/css/main.css">
+
+
+<link rel="stylesheet" href="/deng123-dev.gitee.io/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/deng123-dev.gitee.io/lib/pace/pace-theme-minimal.min.css">
+  <script src="/deng123-dev.gitee.io/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gitee.com","root":"/deng123-dev.gitee.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="任务调度器tags:贪心算法  题目描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode知识总结（5）">
+<meta property="og:url" content="https://gitee.com/deng123-dev/deng123-dev/2020/10/16/leetcode%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%885%EF%BC%89/index.html">
+<meta property="og:site_name" content="邓钧元的个人博客">
+<meta property="og:description" content="任务调度器tags:贪心算法  题目描述">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-203.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-204.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-205.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-206.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-207.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-208.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-209.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-210.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-211.png">
+<meta property="og:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-212.png">
+<meta property="article:published_time" content="2020-10-16T08:12:33.000Z">
+<meta property="article:modified_time" content="2020-10-26T14:34:31.298Z">
+<meta property="article:author" content="邓钧元的个人博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/deng123-dev.github.io/images/pasted-203.png">
+
+<link rel="canonical" href="https://gitee.com/deng123-dev/deng123-dev/2020/10/16/leetcode%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%885%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>leetcode知识总结（5） | 邓钧元的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/deng123-dev.gitee.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">邓钧元的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/deng123-dev.gitee.io/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/deng123-dev.gitee.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/deng123-dev.gitee.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/deng123-dev.gitee.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/deng123-dev.gitee.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://gitee.com/deng123-dev/deng123-dev/2020/10/16/leetcode%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%885%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/deng123-dev.gitee.io/images/avatar.gif">
+      <meta itemprop="name" content="邓钧元的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓钧元的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          leetcode知识总结（5）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-10-16 16:12:33" itemprop="dateCreated datePublished" datetime="2020-10-16T16:12:33+08:00">2020-10-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-10-26 22:34:31" itemprop="dateModified" datetime="2020-10-26T22:34:31+08:00">2020-10-26</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="任务调度器"><a href="#任务调度器" class="headerlink" title="任务调度器"></a>任务调度器</h1><p><strong><em>tags:贪心算法</em></strong></p>
+<hr>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-203.png" alt="upload successful"></p>
+<a id="more"></a>
+<h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class solution&#123;</span><br><span class="line">public int leastInterval(char[] tasks,int n)&#123;</span><br><span class="line">int[] map&#x3D;new int[25];</span><br><span class="line">for(char c:tasks)&#123;</span><br><span class="line">map[c-&#39;A&#39;]++;</span><br><span class="line">&#125;</span><br><span class="line">Arrays.sort(map);</span><br><span class="line">int time&#x3D;0;</span><br><span class="line">while(map[25]&gt;0)&#123;</span><br><span class="line">int i&#x3D;0;</span><br><span class="line">while(i&lt;&#x3D;n)&#123;</span><br><span class="line">if(map[25]&#x3D;&#x3D;0)&#123;</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">if(i&lt;26&amp;&amp;map[25-i]&gt;0)</span><br><span class="line">map[25-i]--;</span><br><span class="line">time++;</span><br><span class="line">i++;</span><br><span class="line">&#125;</span><br><span class="line">Arrays.sort(map);</span><br><span class="line">&#125;</span><br><span class="line">return time;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路和知识总结"><a href="#解题思路和知识总结" class="headerlink" title="解题思路和知识总结"></a>解题思路和知识总结</h2><hr>
+<ul>
+<li><p>解题思路</p>
+<p>这道题的关键在于如何在一个任务的冷却时间更多执行其他任务，先将每个任务出现的次数放入数组，然后对数组进行排序，从出现次数最多的任务开始执行（因为这样执行会更加高效）</p>
+</li>
+</ul>
+<h1 id="合并区间"><a href="#合并区间" class="headerlink" title="合并区间"></a>合并区间</h1><p><strong><em>tags:排序</em></strong></p>
+<hr>
+<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-204.png" alt="upload successful"></p>
+<h2 id="编写代码-1"><a href="#编写代码-1" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[][] merge(int[][] intervals) &#123;</span><br><span class="line">     if(intervals.length&#x3D;&#x3D;0)&#123;</span><br><span class="line">     return new int[0][2];</span><br><span class="line">     &#125;</span><br><span class="line">     Arrays.sort(intervals,new Comparator&lt;int[]&gt;()&#123;</span><br><span class="line">     public  int compare(int[] interval1,int[] interval2)&#123;</span><br><span class="line">        return interval1[0]-interval2[0];</span><br><span class="line">     &#125;</span><br><span class="line">     &#125;);</span><br><span class="line">    List &lt;int[]&gt; merged &#x3D;new ArrayList&lt;int[]&gt;();</span><br><span class="line">    for(int i&#x3D;0;i&lt;intervals.length;++i)&#123;</span><br><span class="line">    int L&#x3D;intervals[i][0],R&#x3D;intervals[i][1];</span><br><span class="line">    if(merged.size()&#x3D;&#x3D;0||merged.get(merged.size()-1)[1]&lt;L)&#123;</span><br><span class="line">        merged.add(new int[]&#123;L,R&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        merged.get(merged.size()-1)[1]&#x3D;Math.max(merged.get(merged.size()-1)[1],R);</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">return merged.toArray(new int[merged.size()][]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路和知识总结-1"><a href="#解题思路和知识总结-1" class="headerlink" title="解题思路和知识总结"></a>解题思路和知识总结</h2><hr>
+<ul>
+<li>解题思路</li>
+</ul>
+<p>根据每组数组的前一个数据进行升序排列，设置一个一维长度长度可变的数组，将数据装入一维数组前进行比较，如果数据的左数据比数组队尾元素大，则全部装入，如果队尾数据在左数据和右数据之间，则用右数据替换队尾元素，如果左，右数据都比数据小，则不做改变</p>
+<h1 id="颜色分类"><a href="#颜色分类" class="headerlink" title="颜色分类"></a>颜色分类</h1><hr>
+<h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-205.png" alt="upload successful"></p>
+<h2 id="编写代码-2"><a href="#编写代码-2" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line"> public void sortColors(int[] nums) &#123;</span><br><span class="line">    int n&#x3D;nums.length;</span><br><span class="line">    int ptr&#x3D;0;  </span><br><span class="line">    for(int i&#x3D;0;i&lt;n;++i)&#123;</span><br><span class="line">     if(nums[i]&#x3D;&#x3D;0)&#123;</span><br><span class="line">        int temp&#x3D;nums[i];</span><br><span class="line">         nums[i]&#x3D;nums[ptr];</span><br><span class="line">         nums[ptr]&#x3D;temp;</span><br><span class="line">         ++ptr;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     for(int i&#x3D;ptr;i&lt;n;++i)&#123;</span><br><span class="line">         if(nums[i]&#x3D;&#x3D;1)&#123;</span><br><span class="line">          int temp&#x3D;nums[i];</span><br><span class="line">          nums[i]&#x3D;nums[ptr];</span><br><span class="line">          nums[ptr]&#x3D;temp;</span><br><span class="line">          ++ptr;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路和知识总结-2"><a href="#解题思路和知识总结-2" class="headerlink" title="解题思路和知识总结"></a>解题思路和知识总结</h2><hr>
+<ul>
+<li><p>解题思路</p>
+<p>这道题设置一个数组当前遍历的索引变量，遍历整个数组，通过交换将数组进行排序</p>
+</li>
+</ul>
+<h1 id="排序链表"><a href="#排序链表" class="headerlink" title="排序链表"></a>排序链表</h1><p><strong><em>tags:排序，链表</em></strong></p>
+<hr>
+<h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-206.png" alt="upload successful"></p>
+<h2 id="编写代码-3"><a href="#编写代码-3" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public ListNode sortList(ListNode head) &#123;</span><br><span class="line">    if(head&#x3D;&#x3D;null || head.next&#x3D;&#x3D;null)</span><br><span class="line">    return head;</span><br><span class="line">    ListNode fast &#x3D;head.next,slow&#x3D;head;</span><br><span class="line">    while(fast!&#x3D;null&amp;&amp;fast.next!&#x3D;null)&#123;</span><br><span class="line">      slow&#x3D;slow.next;</span><br><span class="line">      fast&#x3D;fast.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode tmp&#x3D;slow.next;</span><br><span class="line">    slow.next&#x3D;null;</span><br><span class="line">    ListNode left&#x3D;sortList(head);</span><br><span class="line">    ListNode right&#x3D;sortList(tmp);</span><br><span class="line">    ListNode h&#x3D;new ListNode(0);</span><br><span class="line">    ListNode res&#x3D;h;</span><br><span class="line">    while(left!&#x3D;null&amp;&amp;right!&#x3D;null)&#123;</span><br><span class="line">     if(left.val&lt;right.val)&#123;</span><br><span class="line">           h.next&#x3D;left;</span><br><span class="line">           left&#x3D;left.next;</span><br><span class="line">     &#125;                              </span><br><span class="line">     else &#123;</span><br><span class="line">           h.next&#x3D;right;</span><br><span class="line">           right&#x3D;right.next; </span><br><span class="line">     &#125;</span><br><span class="line">     h&#x3D;h.next;                                         </span><br><span class="line">    &#125;    </span><br><span class="line">    h.next&#x3D;left!&#x3D;null?left:right;</span><br><span class="line">    return res.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路和知识总结-3"><a href="#解题思路和知识总结-3" class="headerlink" title="解题思路和知识总结"></a>解题思路和知识总结</h2><hr>
+<ul>
+<li><p>解题思路</p>
+<p>运用递归先将链表按照二等分一直分直到只剩下一个元素，<br>再排序，设置双指针将链表合并且排序</p>
+<h1 id="汉明距离"><a href="#汉明距离" class="headerlink" title="汉明距离"></a>汉明距离</h1><p><strong><em>tags:位运算</em></strong></p>
+<hr>
+<h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+</li>
+</ul>
+<p><img src="/deng123-dev.github.io/images/pasted-207.png" alt="upload successful"></p>
+<h2 id="编写代码-4"><a href="#编写代码-4" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int hammingDistance(int x, int y) &#123;</span><br><span class="line">    int z&#x3D;x^y;</span><br><span class="line">    int sum&#x3D;0;</span><br><span class="line">    while(z!&#x3D;0)</span><br><span class="line">    &#123;</span><br><span class="line">      sum+&#x3D;z&amp;1;</span><br><span class="line">      z&#x3D;z&gt;&gt;1;</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路和知识总结-4"><a href="#解题思路和知识总结-4" class="headerlink" title="解题思路和知识总结"></a>解题思路和知识总结</h2><hr>
+<ul>
+<li><p>解题思路 </p>
+<p>先对数字进行异或处理，再进行循环和1按位与并且向右移一位</p>
+</li>
+</ul>
+<h1 id="只出现一次的数字"><a href="#只出现一次的数字" class="headerlink" title="只出现一次的数字"></a>只出现一次的数字</h1><p><strong><em>tags:位运算</em></strong></p>
+<hr>
+<h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-208.png" alt="upload successful"></p>
+<h2 id="编写代码-5"><a href="#编写代码-5" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int singleNumber(int[] nums) &#123;</span><br><span class="line">    int single&#x3D;0;</span><br><span class="line">    for(int num:nums)&#123;</span><br><span class="line">    single^&#x3D;num;</span><br><span class="line">    &#125;   </span><br><span class="line">    return single;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路和知识总结-5"><a href="#解题思路和知识总结-5" class="headerlink" title="解题思路和知识总结"></a>解题思路和知识总结</h2><hr>
+<ul>
+<li><p>解题思路</p>
+<p>运用异或来进行那个数的求解，因为两个相同的数异或的值为0</p>
+</li>
+</ul>
+<h1 id="多数元素"><a href="#多数元素" class="headerlink" title="多数元素"></a>多数元素</h1><p><strong><em>tags:位运算</em></strong></p>
+<hr>
+<h2 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-209.png" alt="upload successful"></p>
+<h2 id="编写代码-6"><a href="#编写代码-6" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line">public int majorityElement(int[] nums)&#123;</span><br><span class="line">int count&#x3D;1;</span><br><span class="line">int maj&#x3D;nums[0];</span><br><span class="line">for(int i&#x3D;1;i&lt;nums.length;i++)&#123;</span><br><span class="line">if(maj&#x3D;&#x3D;nums[i])&#123;</span><br><span class="line">count++;</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">count--;</span><br><span class="line">if(count&#x3D;&#x3D;0)&#123;</span><br><span class="line"> maj&#x3D;nums[i+1];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return maj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="解题思路和知识总结-6"><a href="#解题思路和知识总结-6" class="headerlink" title="解题思路和知识总结"></a>解题思路和知识总结</h2><ul>
+<li><p>解题思路</p>
+<p>摩尔算法：从第一个数开始count=1，遇到相同的就加1，遇到不同的就减1，减到0就重新换个数开始计数，总能找到最多的那个</p>
+</li>
+</ul>
+<h1 id="比特位计数"><a href="#比特位计数" class="headerlink" title="比特位计数"></a>比特位计数</h1><hr>
+<h2 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-210.png" alt="upload successful"></p>
+<h2 id="编写代码-7"><a href="#编写代码-7" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] countBits(int num) &#123;</span><br><span class="line">    int [] res&#x3D; new int[num+1];</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;num;i++)&#123;</span><br><span class="line">    res[i]&#x3D;res[i&gt;&gt;1]+(i&amp;1);</span><br><span class="line">    &#125;</span><br><span class="line">   return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路和知识总结-7"><a href="#解题思路和知识总结-7" class="headerlink" title="解题思路和知识总结"></a>解题思路和知识总结</h2><hr>
+<ul>
+<li><p>解题思路</p>
+<p>将数据的二进制表示向右移一位，表示前面一个数据二进制含1<br>的个数，i&amp;1判断最后一位是否需要加0</p>
+</li>
+</ul>
+<h1 id="子集"><a href="#子集" class="headerlink" title="子集"></a>子集</h1><hr>
+<h2 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-211.png" alt="upload successful"></p>
+<h2 id="编写代码-8"><a href="#编写代码-8" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class solution&#123;</span><br><span class="line">List &lt;List&lt;Integer&gt;&gt; res&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">res.add(new ArrayList&lt;&gt;());</span><br><span class="line">for(int i&#x3D;0;i&lt;nums.length;i++)&#123;</span><br><span class="line">int all&#x3D;res.size();</span><br><span class="line">for(int j&#x3D;0;j&lt;all;j++)&#123;</span><br><span class="line">List&lt;Integer&gt;tmp&#x3D;new ArrayList&lt;&gt;(res.get(j));</span><br><span class="line">tmp.add(nums[i]);</span><br><span class="line">res.add(tmp);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="知识总结和解题思路"><a href="#知识总结和解题思路" class="headerlink" title="知识总结和解题思路"></a>知识总结和解题思路</h2><hr>
+<ul>
+<li>解题思路</li>
+</ul>
+<p>先将数组中添加一对数组的括号，通过双层遍历，最内层的每次遍历都是每个位置的元素加上本层的对应元素，</p>
+<h1 id="路径总和III"><a href="#路径总和III" class="headerlink" title="路径总和III"></a>路径总和III</h1><p><strong><em>tags:树，递归</em></strong></p>
+<hr>
+<h2 id="题目描述-9"><a href="#题目描述-9" class="headerlink" title="题目描述"></a>题目描述</h2><hr>
+<p><img src="/deng123-dev.github.io/images/pasted-212.png" alt="upload successful"></p>
+<h2 id="编写代码-9"><a href="#编写代码-9" class="headerlink" title="编写代码"></a>编写代码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class solution&#123;</span><br><span class="line">int pathnumber;</span><br><span class="line">public int pathSum(TreeNode root,int sum)&#123;</span><br><span class="line">if(root&#x3D;&#x3D;null) return 0;</span><br><span class="line">Sum(root,sum);</span><br><span class="line">pathSum(root.left,sum);</span><br><span class="line">pathSum(root.right,sum);</span><br><span class="line">return pathnumber;</span><br><span class="line">&#125;</span><br><span class="line">public void Sum(TreeNode root,int sum)&#123;</span><br><span class="line">if(root&#x3D;&#x3D;null) return;</span><br><span class="line">sum-&#x3D;root.val;</span><br><span class="line">if(sum&#x3D;&#x3D;0)&#123;</span><br><span class="line">pathnumber++;</span><br><span class="line">&#125;</span><br><span class="line">Sum(root.left,sum);</span><br><span class="line">Sum(root.right,sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路和知识总结-8"><a href="#解题思路和知识总结-8" class="headerlink" title="解题思路和知识总结"></a>解题思路和知识总结</h2><ul>
+<li>解题思路</li>
+</ul>
+<p>双重递归，首先先序递归遍历每个节点，再以每个节点作为起始点递归寻找满足条件的路径。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/deng123-dev.gitee.io/2020/09/18/leetcode%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%884%EF%BC%89/" rel="prev" title="leetcode知识总结（4）">
+      <i class="fa fa-chevron-left"></i> leetcode知识总结（4）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/deng123-dev.gitee.io/2020/10/28/leetcode%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%886%EF%BC%89/" rel="next" title="leetcode知识总结（6）">
+      leetcode知识总结（6） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#任务调度器"><span class="nav-number">1.</span> <span class="nav-text">任务调度器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码"><span class="nav-number">1.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识总结"><span class="nav-number">1.3.</span> <span class="nav-text">解题思路和知识总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合并区间"><span class="nav-number">2.</span> <span class="nav-text">合并区间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码-1"><span class="nav-number">2.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识总结-1"><span class="nav-number">2.3.</span> <span class="nav-text">解题思路和知识总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#颜色分类"><span class="nav-number">3.</span> <span class="nav-text">颜色分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码-2"><span class="nav-number">3.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识总结-2"><span class="nav-number">3.3.</span> <span class="nav-text">解题思路和知识总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序链表"><span class="nav-number">4.</span> <span class="nav-text">排序链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码-3"><span class="nav-number">4.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识总结-3"><span class="nav-number">4.3.</span> <span class="nav-text">解题思路和知识总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汉明距离"><span class="nav-number">5.</span> <span class="nav-text">汉明距离</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码-4"><span class="nav-number">5.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识总结-4"><span class="nav-number">5.3.</span> <span class="nav-text">解题思路和知识总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#只出现一次的数字"><span class="nav-number">6.</span> <span class="nav-text">只出现一次的数字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码-5"><span class="nav-number">6.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识总结-5"><span class="nav-number">6.3.</span> <span class="nav-text">解题思路和知识总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多数元素"><span class="nav-number">7.</span> <span class="nav-text">多数元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码-6"><span class="nav-number">7.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识总结-6"><span class="nav-number">7.3.</span> <span class="nav-text">解题思路和知识总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#比特位计数"><span class="nav-number">8.</span> <span class="nav-text">比特位计数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码-7"><span class="nav-number">8.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识总结-7"><span class="nav-number">8.3.</span> <span class="nav-text">解题思路和知识总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子集"><span class="nav-number">9.</span> <span class="nav-text">子集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码-8"><span class="nav-number">9.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识总结和解题思路"><span class="nav-number">9.3.</span> <span class="nav-text">知识总结和解题思路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路径总和III"><span class="nav-number">10.</span> <span class="nav-text">路径总和III</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-9"><span class="nav-number">10.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码-9"><span class="nav-number">10.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路和知识总结-8"><span class="nav-number">10.3.</span> <span class="nav-text">解题思路和知识总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">邓钧元的个人博客</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/deng123-dev.gitee.io/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/deng123-dev.gitee.io/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/deng123-dev.gitee.io/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">邓钧元的个人博客</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/deng123-dev.gitee.io/lib/anime.min.js"></script>
+  <script src="/deng123-dev.gitee.io/lib/velocity/velocity.min.js"></script>
+  <script src="/deng123-dev.gitee.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/deng123-dev.gitee.io/js/utils.js"></script>
+
+<script src="/deng123-dev.gitee.io/js/motion.js"></script>
+
+
+<script src="/deng123-dev.gitee.io/js/schemes/pisces.js"></script>
+
+
+<script src="/deng123-dev.gitee.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/deng123-dev.gitee.io/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
