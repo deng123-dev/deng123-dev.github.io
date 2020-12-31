@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/deng123-dev.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/deng123-dev.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/deng123-dev.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/deng123-dev.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/deng123-dev.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/deng123-dev.github.io/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/deng123-dev.github.io/lib/pace/pace-theme-minimal.min.css">
+  <script src="/deng123-dev.github.io/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/deng123-dev.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言  什么是模型  通过主观意识借助实体或者虚拟表现构成客观阐述形态结构的一种表达目的的物件。 从广义来讲：如果一件事物能随着另一间事物的改变而改变，那么此事物就是另一个事物的模型。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UML(统一建模语言)概要">
+<meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/12/30/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80%E6%A6%82%E8%A6%81/index.html">
+<meta property="og:site_name" content="邓钧元的个人博客">
+<meta property="og:description" content="前言  什么是模型  通过主观意识借助实体或者虚拟表现构成客观阐述形态结构的一种表达目的的物件。 从广义来讲：如果一件事物能随着另一间事物的改变而改变，那么此事物就是另一个事物的模型。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-232.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-231.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-233.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-234.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-236.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-237.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-238.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-239.png">
+<meta property="og:image" content="https://github.com/deng123-dev.github.io/images/pasted-240.png">
+<meta property="article:published_time" content="2020-12-30T08:17:43.000Z">
+<meta property="article:modified_time" content="2020-12-31T04:50:06.345Z">
+<meta property="article:author" content="邓钧元的个人博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/deng123-dev.github.io/images/pasted-232.png">
+
+<link rel="canonical" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/12/30/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80%E6%A6%82%E8%A6%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>UML(统一建模语言)概要 | 邓钧元的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/deng123-dev.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">邓钧元的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/deng123-dev.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/deng123-dev.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/deng123-dev.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/deng123-dev.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/deng123-dev.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/deng123-dev/deng123-dev.github.io/2020/12/30/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80%E6%A6%82%E8%A6%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/deng123-dev.github.io/images/avatar.gif">
+      <meta itemprop="name" content="邓钧元的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓钧元的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UML(统一建模语言)概要
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-12-30 16:17:43" itemprop="dateCreated datePublished" datetime="2020-12-30T16:17:43+08:00">2020-12-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-31 12:50:06" itemprop="dateModified" datetime="2020-12-31T12:50:06+08:00">2020-12-31</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<ul>
+<li>什么是模型</li>
+</ul>
+<p>通过主观意识借助实体或者虚拟表现构成客观阐述形态结构的一种表达目的的物件。</p>
+<p>从广义来讲：如果一件事物能随着另一间事物的改变而改变，那么此事物就是另一个事物的模型。</p>
+<a id="more"></a>
+<ul>
+<li>什么是建模</li>
+</ul>
+<p>建模，就是建立模型，就是为了理解事物而对事物做出的一种抽象，是对事物一种无歧义的书面表述。建立系统模型的过程，又叫做模型化。</p>
+<p>凡是用模型描述系统的因果关系或相互关系的过程都属于建模</p>
+<ul>
+<li><p>UML的作用和特点</p>
+<ul>
+<li><p>作用</p>
+<p>为软件系统建立可视化模型；</p>
+<p>为软件系统建立构件；</p>
+<p>为软件系统建立文档。</p>
+</li>
+<li><p>特点</p>
+<p>面向对象</p>
+<p>可视化</p>
+<p>独立于进程</p>
+<p>独立于程序设计语言</p>
+<p>易于掌握使用</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="基本概念-术语"><a href="#基本概念-术语" class="headerlink" title="基本概念/术语"></a>基本概念/术语</h1><hr>
+<ul>
+<li>类</li>
+</ul>
+<p>类是面向对象系统中最基本的组成元素<br>。类是现实世界事物的抽象原型。它描述一类对象的行为和状态。</p>
+<ul>
+<li>对象</li>
+</ul>
+<p>对象是类的一个特定实例</p>
+<ul>
+<li>类的属性</li>
+</ul>
+<p>属性描述了类的所有对象共有的特性</p>
+<ul>
+<li>类的操作</li>
+</ul>
+<p>操作是类的所有对象共有的行为的抽象</p>
+<ul>
+<li>接口</li>
+</ul>
+<p>接口是用来定义类或组件服务的操作的集合</p>
+<ul>
+<li>节点</li>
+</ul>
+<p>系统运行时的物理单元，代表具有内存以及处理能力的计算资源</p>
+<ul>
+<li>组件</li>
+</ul>
+<p>代表了一个接口定义良好的软件模块</p>
+<ul>
+<li>包</li>
+</ul>
+<p>是一个用来将模型元素分组的通用机制</p>
+<ul>
+<li><p>关联：<br>表示两个类之间存在的某种语义间的联系，规定一种事物的对象可以与另一种事物的对象相连</p>
+<ul>
+<li><p>聚合</p>
+<p>特殊的关联关系，表示类之间的关系是整体和部分的关系，部分可以独立于整体</p>
+</li>
+<li><p>组合</p>
+<p>组合是聚合的变种，它加入了一些重要的语义，部分不能离开整体。</p>
+</li>
+</ul>
+</li>
+<li><p>泛化</p>
+</li>
+</ul>
+<p>一种继承关系，表示一般和特殊的关系</p>
+<ul>
+<li>实现</li>
+</ul>
+<p>被规定对接口和实现接口的类或组件之间的关系</p>
+<ul>
+<li>依赖</li>
+</ul>
+<p>如果一个模型元素的变化会影响另一个模型元素，那么就说这两个模型元素存在依赖关系</p>
+<h1 id="建模工具"><a href="#建模工具" class="headerlink" title="建模工具"></a>建模工具</h1><hr>
+<h2 id="静态建模"><a href="#静态建模" class="headerlink" title="静态建模"></a>静态建模</h2><hr>
+<h3 id="用例图"><a href="#用例图" class="headerlink" title="用例图"></a>用例图</h3><hr>
+<p>描述的是系统外部参与者所理解的系统功能，用例模型用于需求分析阶段。它描述了待开发系统的功能需求；它将系统看作黑盒，从外部参与者的角度来理解系统；它还驱动了需求分析之后各阶段的开发工作。</p>
+<ul>
+<li><p>用例图的组成</p>
+<ul>
+<li><p>用例：系统提供的服务<br><img src="/deng123-dev.github.io/images/pasted-232.png" alt="upload successful">  </p>
+</li>
+<li><p>参与者：角色，系统的用户<br><img src="/deng123-dev.github.io/images/pasted-231.png" alt="upload successful"></p>
+</li>
+<li><p>用例图中的各种关系</p>
+<ul>
+<li><p>参与者与用例间的关联关系：参与者与用例之间的通信，也成为关联或通信关系<br><img src="/deng123-dev.github.io/images/pasted-233.png" alt="upload successful"></p>
+</li>
+<li><p>用例与用例之间的关系：包含关系（include）包含关系描述的是一个用例需要某种功能，而该功能被另外一个用例定义，那么在用例的执行过程中，就可以调用已经定义好的用例<br><img src="/deng123-dev.github.io/images/pasted-234.png" alt="upload successful"></p>
+</li>
+<li><p>用例与用例之间的关系：扩展关系用一个用例（可选）扩展另一个用例（基本例）的功能，将一些常规的动作放在一个基本用例中，将可选的或只在特定条件下才执行的动作放在它的扩展用例中<br><img src="/deng123-dev.github.io/images/pasted-236.png" alt="upload successful"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><hr>
+<p>类图是面向对象建模中最常用的图，类图描述类、接口、协作以及他们之间的关系</p>
+<ul>
+<li>类图的表示</li>
+</ul>
+<p>具体类在类图中用矩形框表示，矩形框分为三层：第一层是类名字。第二层是类的成员变量；第三层是类的方法成员变量以及方法前的访问修饰符用符号来表示：</p>
+<p>“+”表示 public；</p>
+<p>“-”表示 private；</p>
+<p>“#”表示 protected；</p>
+<p>不带符号表示 default。</p>
+<ul>
+<li>类图之间的关系</li>
+</ul>
+<p><img src="/deng123-dev.github.io/images/pasted-237.png" alt="upload successful"></p>
+<h3 id="包图"><a href="#包图" class="headerlink" title="包图"></a>包图</h3><hr>
+<h3 id="部署图"><a href="#部署图" class="headerlink" title="部署图"></a>部署图</h3><hr>
+<h2 id="动态建模"><a href="#动态建模" class="headerlink" title="动态建模"></a>动态建模</h2><hr>
+<h3 id="顺序图"><a href="#顺序图" class="headerlink" title="顺序图"></a>顺序图</h3><hr>
+<p>顺序图是强调消息时间顺序的交互图，描述了对象之间传送消息的时间顺序，用于表示用例中行为的顺序</p>
+<ul>
+<li><p>建模元素</p>
+<ul>
+<li><p>角色<br>可以是人或系统或其子系统</p>
+</li>
+<li><p>对象<br>可以与角色进行交互，用矩形框表示，对象名带有下划线</p>
+</li>
+<li><p>生命线<br>从对象图标底部中心位置向下的一条虚线</p>
+</li>
+<li><p>激活期<br>也被称为控制焦点，代表对下个执行一项操作的时期，是顺序图中表示时间段的符号，用小矩形表示，也被称为激活条或控制期，矩形长度代表激活的持续时间</p>
+</li>
+<li><p>消息<br>对象之间某种形式的通信，用带有箭头的线并附以消息表达式的方式表示</p>
+<ul>
+<li><p>同步消息：<br>仅当发送者要发送一个消息而且接受者已经做好接收这个消息的准备时才能发送的消息<br><img src="/deng123-dev.github.io/images/pasted-238.png" alt="upload successful"></p>
+</li>
+<li><p>异步消息：<br>不管接受者是否做好了准备，发送者都可以发送的消息<br><img src="/deng123-dev.github.io/images/pasted-239.png" alt="upload successful"></p>
+</li>
+<li><p>返回消息：表示从过程调用返回，用一个开放箭头的虚线表示<br><img src="/deng123-dev.github.io/images/pasted-240.png" alt="upload successful"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="状态图"><a href="#状态图" class="headerlink" title="状态图"></a>状态图</h3><hr>
+<h3 id="活动图"><a href="#活动图" class="headerlink" title="活动图"></a>活动图</h3><hr>
+<h3 id="通信图（协作图）"><a href="#通信图（协作图）" class="headerlink" title="通信图（协作图）"></a>通信图（协作图）</h3><hr>
+<p>强调了参与交互作用的对象的组织。</p>
+<p>和顺序图的共同点：二者都是用对象间的交互来描述用例的；</p>
+<p>和顺序图的不同点：时序图强调交互的时间次序。协作图强调交互的空间结构。</p>
+<p>但是很少使用通信图，因为顺序图更简洁，更直观</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2020/11/30/git%E5%9F%BA%E7%A1%80/" rel="prev" title="git基础">
+      <i class="fa fa-chevron-left"></i> git基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2020/12/30/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E6%A6%82%E8%AE%BA/" rel="next" title="软件构造概要">
+      软件构造概要 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念-术语"><span class="nav-number">2.</span> <span class="nav-text">基本概念&#x2F;术语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建模工具"><span class="nav-number">3.</span> <span class="nav-text">建模工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态建模"><span class="nav-number">3.1.</span> <span class="nav-text">静态建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用例图"><span class="nav-number">3.1.1.</span> <span class="nav-text">用例图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类图"><span class="nav-number">3.1.2.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包图"><span class="nav-number">3.1.3.</span> <span class="nav-text">包图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署图"><span class="nav-number">3.1.4.</span> <span class="nav-text">部署图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态建模"><span class="nav-number">3.2.</span> <span class="nav-text">动态建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序图"><span class="nav-number">3.2.1.</span> <span class="nav-text">顺序图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态图"><span class="nav-number">3.2.2.</span> <span class="nav-text">状态图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#活动图"><span class="nav-number">3.2.3.</span> <span class="nav-text">活动图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通信图（协作图）"><span class="nav-number">3.2.4.</span> <span class="nav-text">通信图（协作图）</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">邓钧元的个人博客</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/deng123-dev.github.io/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/deng123-dev.github.io/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/deng123-dev.github.io/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">邓钧元的个人博客</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/deng123-dev.github.io/lib/anime.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/deng123-dev.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/deng123-dev.github.io/js/utils.js"></script>
+
+<script src="/deng123-dev.github.io/js/motion.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/deng123-dev.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/deng123-dev.github.io/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
