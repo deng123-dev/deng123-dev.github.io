@@ -24,13 +24,13 @@
 
   <meta name="description" content="导言 概念理解  程序  为了解决某个特定问题而用程序设计语言描述的适合计算机处理的语句序列  软件  程序和程序设计发展到一定规模后并且在逐步商业化的过程中形成的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="软件构造概要">
+<meta property="og:title" content="软件构造概要（1）">
 <meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/12/30/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E6%A6%82%E8%AE%BA/index.html">
 <meta property="og:site_name" content="邓钧元的个人博客">
 <meta property="og:description" content="导言 概念理解  程序  为了解决某个特定问题而用程序设计语言描述的适合计算机处理的语句序列  软件  程序和程序设计发展到一定规模后并且在逐步商业化的过程中形成的">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-30T11:35:51.000Z">
-<meta property="article:modified_time" content="2020-12-31T13:43:37.901Z">
+<meta property="article:modified_time" content="2021-01-01T08:49:40.938Z">
 <meta property="article:author" content="邓钧元的个人博客">
 <meta name="twitter:card" content="summary">
 
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>软件构造概要 | 邓钧元的个人博客</title>
+  <title>软件构造概要（1） | 邓钧元的个人博客</title>
   
 
 
@@ -208,7 +208,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          软件构造概要
+          软件构造概要（1）
         </h1>
 
         <div class="post-meta">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-31 21:43:37" itemprop="dateModified" datetime="2020-12-31T21:43:37+08:00">2020-12-31</time>
+                <time title="Modified: 2021-01-01 16:49:40" itemprop="dateModified" datetime="2021-01-01T16:49:40+08:00">2021-01-01</time>
               </span>
 
           
@@ -460,10 +460,128 @@
 </ul>
 <p>程序模块化可以把复杂的问题简单化</p>
 <ul>
-<li>模块内聚性</li>
+<li><p>模块内聚性</p>
+<p>内聚性是对一个模块内部各个组成元素之间相互结合的紧密程度的度量指标。<br>下列是7种不同的内聚：（内聚度从弱到强）</p>
+<p>偶然内聚；逻辑内聚；时间内聚；过程内聚；通信内聚；顺序内聚；功能内聚</p>
+</li>
 </ul>
 <ul>
-<li>模块耦合性</li>
+<li><p>模块耦合性</p>
+<p>耦合性是一个模块与系统内其他模块及外部世界的关联程度的度量。<br>下列是7种不同的耦合：（耦合度从低到高）</p>
+<p>非直接耦合；数据耦合；标记耦合；控制耦合；外部耦合；公共耦合；内容耦合</p>
+<h1 id="面向对象的软件构造"><a href="#面向对象的软件构造" class="headerlink" title="面向对象的软件构造"></a>面向对象的软件构造</h1></li>
+</ul>
+<hr>
+<h2 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h2><hr>
+<ul>
+<li><p>抽象</p>
+<p>对一个过程或一件事物的某些细节有目的的隐藏，以便把其他方面、细节或结构表达的更清楚</p>
+</li>
+<li><p>封装</p>
+<p>把一个事物的性质和行为结合在一起成为构件，对外形成该事物的界限；信息隐蔽</p>
+</li>
+<li><p>信息隐蔽</p>
+<p>外界不能直接存取构件的内部信息及隐藏起来的操作</p>
+</li>
+<li><p>抽象数据类型</p>
+<p>与表示无关的数据类型，是一个数据类型及定义在该模型上的一组操作 </p>
+</li>
+<li><p>分类</p>
+<p>试图把具有共同构造或表现出共同行为的事情分成一组</p>
+</li>
+<li><p>多态</p>
+<p>接口的多种不同的实现方式</p>
+</li>
+<li><p>接口</p>
+<p>自己提供给外界的一种抽象化物</p>
+</li>
+<li><p>聚合</p>
+<p>部分和整体之间的关系，部分可以独立于整体</p>
+</li>
+<li><p>组合</p>
+<p>部分和整体之间的关系，部分不能离开整体</p>
+</li>
+<li><p>UML</p>
+<p>统一建模语言</p>
+</li>
+<li><p>上转型对象</p>
+<p>假设，A类是B类的父类，当我们用子类创建一个对象，并把这个对象的引用放到父类的对象中时，A a;<br>B b=new B();<br>a=b;<br>称这个父类对象 a是子类对象b的上转型对象。</p>
+</li>
+<li><p>单元测试框架</p>
+<p>每个程序单元进行测试的框架</p>
+</li>
+<li><p>设计模式</p>
+<p>面向对象程序设计在开发过程种出现了一些反复可用、解决实际问题的解决方案</p>
+</li>
+<li><p>设计原则</p>
+</li>
+</ul>
+<p>为良好的软件设计提供了指南和准则，让我们判断什么是好的软件</p>
+<h2 id="软件测试和软件调试"><a href="#软件测试和软件调试" class="headerlink" title="软件测试和软件调试"></a>软件测试和软件调试</h2><hr>
+<ul>
+<li><p>软件测试</p>
+<p>选择性地运行程序，目的是显示程序有错误、没有按照预期执行或产生预期的结果</p>
+</li>
+<li><p>软件调试</p>
+<p>选择性地运行程序，目的是发现程序的出错的根源和位置，并修改程序</p>
+</li>
+<li><p>测试和调试的联系</p>
+<p>测试发现程序出现的错误，调试来修改出错的程序</p>
+</li>
+<li><p>为什么调试是一项智力活动</p>
+</li>
+</ul>
+<h2 id="面向对象的5个基本原则"><a href="#面向对象的5个基本原则" class="headerlink" title="面向对象的5个基本原则"></a>面向对象的5个基本原则</h2><hr>
+<ul>
+<li>单一职责原则</li>
+</ul>
+<p><strong><em>它规定一个类应该只有一个发生变化的原因</em></strong></p>
+<ul>
+<li>开闭原则</li>
+</ul>
+<p><strong><em>软件中的对象应该对于扩展是开放的，但对于修改是封闭的，</em></strong></p>
+<ul>
+<li>里氏代换原则</li>
+</ul>
+<p><strong><em>任何基类可以出现的地方，子类一定可以出现.</em></strong></p>
+<ul>
+<li>依赖倒置原则</li>
+</ul>
+<p><strong><em>程序要依赖于抽象接口，不要依赖于具体实现</em></strong></p>
+<ul>
+<li>接口隔离原则</li>
+</ul>
+<p><strong><em>客户端不应该依赖于它不需要的接口。一个类对另一个类的依赖应该建立在最小的接口上</em></strong></p>
+<h2 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h2><hr>
+<ul>
+<li><p>JAVA注解</p>
+<p>为程序的元素（类、方法、成员变量）加上更直观的说明，这些说明信息是与程序的业务逻辑无关，并且供指定的工具或框架使用</p>
+</li>
+<li><p>JUnit基本注解</p>
+<ul>
+<li>@Test  ：测试方法</li>
+<li>@Before ：在每个测试方法执行前都要执行一次</li>
+<li>@After：在每个测试方法之后都要执行依次</li>
+<li>@Runwith：执行测试的运行器</li>
+<li>@Ignore：在测试种会被忽略</li>
+</ul>
+</li>
+<li><p>JUnit断言</p>
+<ul>
+<li><p>断言的作用</p>
+<p>比较待测程序的运行结果和预期结果是否一致</p>
+</li>
+<li><p>JUnit测试步骤</p>
+<ul>
+<li>为待测软建立一个测试类</li>
+<li>为测试做必要的准备</li>
+<li>为测试类的成员变量/函数编写测试方法</li>
+<li>运行测试，查看结果，修改代码</li>
+<li>每次修改代码，重复上述两步</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -484,8 +602,8 @@
       <i class="fa fa-chevron-left"></i> UML(统一建模语言)概要
     </a></div>
       <div class="post-nav-item">
-    <a href="/deng123-dev.github.io/2020/12/31/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="设计模式">
-      设计模式 <i class="fa fa-chevron-right"></i>
+    <a href="/deng123-dev.github.io/2020/12/31/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="设计模式概要">
+      设计模式概要 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -545,7 +663,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导言"><span class="nav-number">1.</span> <span class="nav-text">导言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念理解"><span class="nav-number">1.1.</span> <span class="nav-text">概念理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件开发过程的类型"><span class="nav-number">1.2.</span> <span class="nav-text">软件开发过程的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序设计和软件开发"><span class="nav-number">1.3.</span> <span class="nav-text">程序设计和软件开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件构造活动的前提"><span class="nav-number">1.4.</span> <span class="nav-text">软件构造活动的前提</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术理解"><span class="nav-number">1.5.</span> <span class="nav-text">技术理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块化软件构造"><span class="nav-number">2.</span> <span class="nav-text">模块化软件构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念理解-1"><span class="nav-number">2.1.</span> <span class="nav-text">概念理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化"><span class="nav-number">2.2.</span> <span class="nav-text">模块化</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导言"><span class="nav-number">1.</span> <span class="nav-text">导言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念理解"><span class="nav-number">1.1.</span> <span class="nav-text">概念理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件开发过程的类型"><span class="nav-number">1.2.</span> <span class="nav-text">软件开发过程的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序设计和软件开发"><span class="nav-number">1.3.</span> <span class="nav-text">程序设计和软件开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件构造活动的前提"><span class="nav-number">1.4.</span> <span class="nav-text">软件构造活动的前提</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术理解"><span class="nav-number">1.5.</span> <span class="nav-text">技术理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块化软件构造"><span class="nav-number">2.</span> <span class="nav-text">模块化软件构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念理解-1"><span class="nav-number">2.1.</span> <span class="nav-text">概念理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化"><span class="nav-number">2.2.</span> <span class="nav-text">模块化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象的软件构造"><span class="nav-number">3.</span> <span class="nav-text">面向对象的软件构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念解释"><span class="nav-number">3.1.</span> <span class="nav-text">概念解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件测试和软件调试"><span class="nav-number">3.2.</span> <span class="nav-text">软件测试和软件调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象的5个基本原则"><span class="nav-number">3.3.</span> <span class="nav-text">面向对象的5个基本原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JUnit"><span class="nav-number">3.4.</span> <span class="nav-text">JUnit</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -559,7 +677,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/deng123-dev.github.io/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

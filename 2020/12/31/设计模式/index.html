@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"github.com","root":"/deng123-dev.github.io/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":50,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="主要设计原则  单一职责原则  又称单一功能原则，面向对象五个基本原则之一，它规定一个类应该只有一个发生变化的原因">
+  <meta name="description" content="面向对象设计原则  单一职责原则  又称单一功能原则，面向对象五个基本原则之一，它规定一个类应该只有一个发生变化的原因">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式">
+<meta property="og:title" content="设计模式概要">
 <meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/12/31/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="邓钧元的个人博客">
-<meta property="og:description" content="主要设计原则  单一职责原则  又称单一功能原则，面向对象五个基本原则之一，它规定一个类应该只有一个发生变化的原因">
+<meta property="og:description" content="面向对象设计原则  单一职责原则  又称单一功能原则，面向对象五个基本原则之一，它规定一个类应该只有一个发生变化的原因">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-31T12:34:54.000Z">
-<meta property="article:modified_time" content="2021-01-01T02:23:41.679Z">
+<meta property="article:modified_time" content="2021-01-01T12:12:02.127Z">
 <meta property="article:author" content="邓钧元的个人博客">
 <meta name="twitter:card" content="summary">
 
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>设计模式 | 邓钧元的个人博客</title>
+  <title>设计模式概要 | 邓钧元的个人博客</title>
   
 
 
@@ -208,7 +208,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          设计模式
+          设计模式概要
         </h1>
 
         <div class="post-meta">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-01 10:23:41" itemprop="dateModified" datetime="2021-01-01T10:23:41+08:00">2021-01-01</time>
+                <time title="Modified: 2021-01-01 20:12:02" itemprop="dateModified" datetime="2021-01-01T20:12:02+08:00">2021-01-01</time>
               </span>
 
           
@@ -246,7 +246,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="主要设计原则"><a href="#主要设计原则" class="headerlink" title="主要设计原则"></a>主要设计原则</h1><hr>
+        <h1 id="面向对象设计原则"><a href="#面向对象设计原则" class="headerlink" title="面向对象设计原则"></a>面向对象设计原则</h1><hr>
 <ul>
 <li>单一职责原则</li>
 </ul>
@@ -272,7 +272,43 @@
 <ul>
 <li>接口隔离原则</li>
 </ul>
-<p><strong><em>客户端不应该依赖于它不需要的接口。一个类对另一个类的依赖应该建立在最小的接口上</em></strong></p>
+<p><strong><em>类不应该依赖于它不需要的接口。一个类对另一个类的依赖应该建立在最小的接口上</em></strong></p>
+<h1 id="几种设计模式"><a href="#几种设计模式" class="headerlink" title="几种设计模式"></a>几种设计模式</h1><hr>
+<ul>
+<li><p>工厂模式</p>
+<p>  <strong><em>实例化对象模式，是用工厂方法代替new操作的一种模式</em></strong></p>
+<p>  当创建实例时所作的初始化工作较复杂时，可以创建工厂，将创建实例的工作与使用实例的工作分开。</p>
+<p>  工厂模式又分为<strong>简单工厂</strong>和<strong>抽象工厂</strong>，这两个模式区别在于需要创建对象的复杂程度上</p>
+</li>
+<li><p>命令模式</p>
+<p><strong><em>将一组行为抽象为对象，实现行为请求者和行为实行者之间的松耦合。</em></strong></p>
+<ul>
+<li><p>命令模式的本质是对命令进行封装</p>
+</li>
+<li><p>每一个命令都是一个操作</p>
+</li>
+<li><p>命令模式使得请求的一方不必知道接受请求一方的接口</p>
+</li>
+<li><p>使请求本身成为一个对象</p>
+</li>
+<li><p>命令模式的关键在于引入抽象命令接口</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>适配器模式</li>
+</ul>
+<p><strong><em>适配器模式将一个类的接口适配成用户所期待的</em></strong>，<br>一个适配允许通常因为接口不兼容而不能在一起工作的类工作在一起，做法是将类自己的接口包裹在一个已存在的类中<br>共有两类适配器模型：</p>
+<p>1.对象适配器</p>
+<p>在这种适配器模式中，适配器容纳一个它包裹的类的实例。在这种情况下，适配器调用被包裹对象的物理实体</p>
+<p>2.类适配器</p>
+<p>在这种适配器模式下，适配器继承自已实现的类（一般多重继承）</p>
+<ul>
+<li>观察者模式</li>
+</ul>
+<p>有时也被称为模型-视图模式，<strong><em>观察者模式是一种对象行为模式。它定义对象之间的一对多的依赖关系，当一个对象的状态改变时，所有依赖于它的对象都得到通知并自动更新</em></strong></p>
+<p>观察者模式的主要的作用就是对对象解耦，将观察者和被观察者完全隔离。</p>
 
     </div>
 
@@ -288,10 +324,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/deng123-dev.github.io/2020/12/30/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E6%A6%82%E8%AE%BA/" rel="prev" title="软件构造概要">
-      <i class="fa fa-chevron-left"></i> 软件构造概要
+    <a href="/deng123-dev.github.io/2020/12/30/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E6%A6%82%E8%AE%BA/" rel="prev" title="软件构造概要（1）">
+      <i class="fa fa-chevron-left"></i> 软件构造概要（1）
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/deng123-dev.github.io/2021/01/01/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E6%A6%82%E8%A6%81%EF%BC%882%EF%BC%89/" rel="next" title="软件构造概要（2）">
+      软件构造概要（2） <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -350,7 +389,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#主要设计原则"><span class="nav-number">1.</span> <span class="nav-text">主要设计原则</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象设计原则"><span class="nav-number">1.</span> <span class="nav-text">面向对象设计原则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#几种设计模式"><span class="nav-number">2.</span> <span class="nav-text">几种设计模式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -364,7 +403,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/deng123-dev.github.io/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
