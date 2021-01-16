@@ -24,13 +24,13 @@
 
   <meta name="description" content="导言 概念理解  程序  为了解决某个特定问题而用程序设计语言描述的适合计算机处理的语句序列  软件  程序和程序设计发展到一定规模后并且在逐步商业化的过程中形成的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="软件构造概要（1）">
+<meta property="og:title" content="软件构造概要">
 <meta property="og:url" content="https://github.com/deng123-dev/deng123-dev.github.io/2020/12/30/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E6%A6%82%E8%AE%BA/index.html">
 <meta property="og:site_name" content="邓钧元的个人博客">
 <meta property="og:description" content="导言 概念理解  程序  为了解决某个特定问题而用程序设计语言描述的适合计算机处理的语句序列  软件  程序和程序设计发展到一定规模后并且在逐步商业化的过程中形成的">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-30T11:35:51.000Z">
-<meta property="article:modified_time" content="2021-01-01T08:49:40.938Z">
+<meta property="article:modified_time" content="2021-01-15T14:26:04.538Z">
 <meta property="article:author" content="邓钧元的个人博客">
 <meta name="twitter:card" content="summary">
 
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>软件构造概要（1） | 邓钧元的个人博客</title>
+  <title>软件构造概要 | 邓钧元的个人博客</title>
   
 
 
@@ -208,7 +208,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          软件构造概要（1）
+          软件构造概要
         </h1>
 
         <div class="post-meta">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-01 16:49:40" itemprop="dateModified" datetime="2021-01-01T16:49:40+08:00">2021-01-01</time>
+                <time title="Modified: 2021-01-15 22:26:04" itemprop="dateModified" datetime="2021-01-15T22:26:04+08:00">2021-01-15</time>
               </span>
 
           
@@ -368,7 +368,8 @@
 <p> 软件开发包括程序设计、数据库设计、用户界面设计、软件接口设计和各种复杂的配置；软件开需要团队的分工合作，采用工程化的方法，按照项目进度完成开发</p>
 </li>
 </ul>
-<h2 id="软件构造活动的前提"><a href="#软件构造活动的前提" class="headerlink" title="软件构造活动的前提"></a>软件构造活动的前提</h2><ul>
+<h2 id="软件构造活动的前提"><a href="#软件构造活动的前提" class="headerlink" title="软件构造活动的前提"></a>软件构造活动的前提</h2><hr>
+<ul>
 <li><p>选择合适的编程语言</p>
 </li>
 <li><p>编程工具和集成开发环境</p>
@@ -378,7 +379,8 @@
 <li><p>软件开发的最佳实践</p>
 </li>
 </ul>
-<h2 id="技术理解"><a href="#技术理解" class="headerlink" title="技术理解"></a>技术理解</h2><ul>
+<h2 id="技术理解"><a href="#技术理解" class="headerlink" title="技术理解"></a>技术理解</h2><hr>
+<ul>
 <li>设计模式</li>
 </ul>
 <p>对软件设计中普遍存在的问题所提出的解决方案</p>
@@ -469,9 +471,9 @@
 <li><p>模块耦合性</p>
 <p>耦合性是一个模块与系统内其他模块及外部世界的关联程度的度量。<br>下列是7种不同的耦合：（耦合度从低到高）</p>
 <p>非直接耦合；数据耦合；标记耦合；控制耦合；外部耦合；公共耦合；内容耦合</p>
-<h1 id="面向对象的软件构造"><a href="#面向对象的软件构造" class="headerlink" title="面向对象的软件构造"></a>面向对象的软件构造</h1></li>
+</li>
 </ul>
-<hr>
+<h1 id="面向对象的软件构造"><a href="#面向对象的软件构造" class="headerlink" title="面向对象的软件构造"></a>面向对象的软件构造</h1><hr>
 <h2 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h2><hr>
 <ul>
 <li><p>抽象</p>
@@ -583,6 +585,378 @@
 </ul>
 </li>
 </ul>
+<h1 id="数据处理的软件构造"><a href="#数据处理的软件构造" class="headerlink" title="数据处理的软件构造"></a>数据处理的软件构造</h1><hr>
+<h2 id="概念解释-1"><a href="#概念解释-1" class="headerlink" title="概念解释"></a>概念解释</h2><hr>
+<ul>
+<li>数据持久性</li>
+</ul>
+<p>数据能够长期存储的能力</p>
+<!-- more -->
+<ul>
+<li>测试覆盖</li>
+</ul>
+<p>指测试系统覆盖被测试系统的程度</p>
+<ul>
+<li>语句覆盖</li>
+</ul>
+<p>设计测试用例，判断程序的每条语句是否都能执行</p>
+<ul>
+<li>路径覆盖</li>
+</ul>
+<p>要同时满足条件覆盖和判定覆盖</p>
+<ul>
+<li>判定覆盖</li>
+</ul>
+<p>设计测试用例，使得程序种的每个判断的分值都至少经历一次</p>
+<ul>
+<li>条件覆盖</li>
+</ul>
+<p>设计测试用例，使得程序中的简单布尔条件的所有可能值都至少满足一次</p>
+<h2 id="防御性编程"><a href="#防御性编程" class="headerlink" title="防御性编程"></a>防御性编程</h2><hr>
+<ul>
+<li>基本思想</li>
+</ul>
+<p>程序员要预见其他程序员的过错，无效的输入，甚至有害的数据及使用者的过失，采取适当的措施保护自己的程序</p>
+<ul>
+<li><p>基本原则 </p>
+<p>检查每个输入参数的数据</p>
+</li>
+<li><p>处理方法</p>
+<ul>
+<li><p>处理错误</p>
+</li>
+<li><p>使用异常</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="表驱动编程"><a href="#表驱动编程" class="headerlink" title="表驱动编程"></a>表驱动编程</h2><hr>
+<ul>
+<li>什么是表驱动编程</li>
+</ul>
+<p>算式基的计算把加法、减法算式的约束条件，以及算式产生的信息都放在了一张表中，使程序在表中通过选择条件得到算式及其运算结果。如此编写程序的方式叫做表驱动编程</p>
+<ul>
+<li><p>使用表编程方法需考虑元素</p>
+<ul>
+<li><p>表项的内容</p>
+</li>
+<li><p>表项的查询</p>
+<ul>
+<li><p>直接访问</p>
+<p>通过数组下标或矩阵下标直接访问表</p>
+</li>
+<li><p>阶梯访问</p>
+<p>表中的项表示一个数据范围而不是对应不同的数据，而且数据的排序按照一定顺序</p>
+</li>
+<li><p>索引访问</p>
+<p>首先为查询的数据建立一个索引表，用索引数据在索引表中找到关键字</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="用户交互的软件构造"><a href="#用户交互的软件构造" class="headerlink" title="用户交互的软件构造"></a>用户交互的软件构造</h1><hr>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><hr>
+<ul>
+<li><p>用户界面</p>
+<p>如何把一组功能合理地组织并呈现给用户使用</p>
+</li>
+<li><p>用户交互</p>
+<p>有关交互式计算机系统地设计、评估、实现等相关现象地学科</p>
+</li>
+<li><p>可用性</p>
+<p>可用性是在某个考察时间，系统能够正常运行的概率</p>
+</li>
+<li><p>软件原型</p>
+<p>目标系统地一个初步状态、形式或实例，为系统地以后阶段当作模型</p>
+</li>
+</ul>
+<ul>
+<li><p>软件集成</p>
+<p>将多个软件地功能集合到一个软件上</p>
+</li>
+<li><p>功能集成</p>
+<p>把具有不同功能的程序或模块关联起来</p>
+</li>
+<li><p>界面集成</p>
+<p>具有不同功能的程序或模块提供一个统一的用户交互界面</p>
+</li>
+</ul>
+<ul>
+<li><p>自底向上集成</p>
+<p>选择独立性最大或对其他模块依赖性最小的模块开始，从程序底部开始，逐次增加控制模块，直至完成整个程序</p>
+</li>
+<li><p>自顶向下集成</p>
+<p>集成模块从根部的控制模块开始，以控制层次的顺序，逐次增加模块，直至形成整个系统的过程</p>
+</li>
+<li><p>增量式集成</p>
+</li>
+</ul>
+<p>以一个基本模块或主模块为基础，每次增加一个或一组模块形成程序，直至所有模块都集成至部分程序构成软件整体</p>
+<ul>
+<li>持续集成</li>
+</ul>
+<p>软件开发过程中对程序频繁集成</p>
+<ul>
+<li><p>驱动程序</p>
+<p>驱动模块的使命就是根据测试用例的设计去调用被测试模块，并且判断被测试模块的返回值是否与测试用例的预期结果相符</p>
+</li>
+<li><p>桩程序</p>
+<p>桩模块的使命除了使得程序能够编译通过之外，还需要模拟返回被代替的模块的各种可能返回值</p>
+</li>
+<li><p>回归测试</p>
+<p>复用之前的测试对集成后的软件或其中的某个子集重新测试，以确保修改的模块或其他程序变更没有传播不期望的副作用</p>
+</li>
+</ul>
+<ul>
+<li><p>软件建模</p>
+<p>对客观进行有必要的抽象和简化，进行软件模型建立的过程</p>
+</li>
+</ul>
+<h2 id="交互设计的8条黄金规则"><a href="#交互设计的8条黄金规则" class="headerlink" title="交互设计的8条黄金规则"></a>交互设计的8条黄金规则</h2><hr>
+<ul>
+<li><p>尽量保持一致</p>
+</li>
+<li><p>满足普遍的可用性</p>
+</li>
+<li><p>提供信息反馈</p>
+</li>
+<li><p>设计对话框以产生结束消息</p>
+</li>
+<li><p>预防并成立错误</p>
+</li>
+<li><p>允许撤销错位</p>
+</li>
+<li><p>支持内部控制点</p>
+</li>
+<li><p>减轻短时记忆负担</p>
+</li>
+</ul>
+<h2 id="静态测试"><a href="#静态测试" class="headerlink" title="静态测试"></a>静态测试</h2><hr>
+<ul>
+<li><p>什么是静态测试</p>
+<p>静态测试不执行程序，而是通过阅读和分析代码及相关资料、发现软件错误的活动。静态测试又称人工手动测试</p>
+</li>
+<li><p>有哪些常见的静态测试</p>
+<ul>
+<li><p>桌面检查</p>
+<p>程序员个人模拟计算机“阅读”程序，发现代码错误的方法</p>
+</li>
+<li><p>代码走查</p>
+<p>两人进行，一人协调走查，另一人扮演测试者</p>
+</li>
+<li><p>正式审查</p>
+<p>一种正式的结构化检查和评估方法，一般有计划、流程、结果和追查</p>
+</li>
+<li><p>同行审查</p>
+<p> 对代码的全面质量审查，包括代码的可维护性、可扩展性、可使用性，以及安全和编程规范是否得到遵守，是软件开发队伍对程序质量和信赖性的自我评估</p>
+</li>
+<li><p>检查表</p>
+<p>正式审查和同行评审都需要检查表。它们列出了容易出现的典型错误</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="基于模型的测试"><a href="#基于模型的测试" class="headerlink" title="基于模型的测试"></a>基于模型的测试</h2><hr>
+<p>将软件建模用于软件测试中，模型是对软件的抽象，有限状态图和场景模型在超越语句、函数等程序组成的抽象层次，从用户的角度、模块间的动态交互行为来刻画程序，适用于集成测试的用例设计</p>
+<h1 id="代码重构和交付"><a href="#代码重构和交付" class="headerlink" title="代码重构和交付"></a>代码重构和交付</h1><hr>
+<ul>
+<li>什么是代码重构</li>
+</ul>
+<p>在不改变软件外部行为的前提下改善它的内部结构</p>
+<ul>
+<li>代码重构的3个时机</li>
+</ul>
+<p>给程序增量添加功能时、定位错误时、评审代码时</p>
+<ul>
+<li><p>测试阶段和内容</p>
+<ul>
+<li>单元测试</li>
+</ul>
+<p>对组成程序基本单元进行测试</p>
+<ul>
+<li>集成测试</li>
+</ul>
+<p>对两个或两个以上相互关联的程序单元进行测试</p>
+<ul>
+<li>系统测试</li>
+</ul>
+<p>把整个软件视为一个完整的系统，对其测试</p>
+<ul>
+<li><p>验收测试</p>
+<p>确保软件准备就绪，可以在用户的环境让最终用户将其用于执行软件的既定功能和任务</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>测试驱动开发</li>
+</ul>
+<p>一种不同于传统的软件开发流程的新型开发方式。它要求在编写某个功能的代码前先编写测试代码，然后只编写使测试通过的代码，通过测试推动整个软件的开发，有助于编写简洁可用和高质量的代码，加速开发过程</p>
+<h1 id="GUI软件构造"><a href="#GUI软件构造" class="headerlink" title="GUI软件构造"></a>GUI软件构造</h1><hr>
+<ul>
+<li><p>基本的GUI设计规范</p>
+<ul>
+<li><p>界面合理</p>
+<p>要求有合理的布局和颜色搭配</p>
+<!-- more -->  </li>
+<li><p>风格一致</p>
+<p>GUI应采用标准的组件、明确定义的术语，和用户的习惯和知识领域一致</p>
+</li>
+<li><p>元素标准</p>
+<ul>
+<li><p>窗口与对话框的标准</p>
+</li>
+<li><p>菜单和工具条的标准</p>
+</li>
+<li><p>图标的标准</p>
+</li>
+<li><p>基本组件的标准</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>GUI设计原则</p>
+<ul>
+<li><p>关注用户及其任务，而不是技术</p>
+</li>
+<li><p>首先考虑功能，然后才是表示</p>
+</li>
+<li><p>对任务的看法与用户保持一致</p>
+</li>
+<li><p>设计要符合常见情况</p>
+</li>
+<li><p>不要分散用户对目标注意力</p>
+</li>
+<li><p>促进学习</p>
+</li>
+<li><p>传递信息，而不仅仅是数据</p>
+</li>
+<li><p>设计应满足响应需求</p>
+</li>
+<li><p>通过用户试用发现改正错误</p>
+</li>
+</ul>
+</li>
+<li><p>事件驱动编程</p>
+<p>主要用于GUI和其他为响应用户的交互做出特定动作的应用程序。在事件驱动编程的应用中，通常有一个监听事件的主循环，一旦监测到其中一个事件，就出发函数调用，执行相应的动作。事件驱动编程可以理解为实现MVC模式的一种技术方案，其适用于用户需求需要经常改变的应用程序</p>
+</li>
+</ul>
+<h1 id="应用数据库"><a href="#应用数据库" class="headerlink" title="应用数据库"></a>应用数据库</h1><hr>
+<h2 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h2><hr>
+<ul>
+<li>码</li>
+</ul>
+<p>元组中的每一个分量依赖于其所在元组的标识</p>
+<ul>
+<li>候选码</li>
+</ul>
+<p>若关系中的某一属性组的值能唯一地标识一个元组，该属性组为候选码</p>
+<ul>
+<li>主码<br>若一个关系可以有多个候选码，则选择一个作为主码</li>
+</ul>
+<ul>
+<li><p>事务</p>
+<p>数据库应用程序的基本逻辑单元，是一个不可切分的基本单元</p>
+</li>
+<li><p>游标</p>
+<p>系统为用户开设的一个数据缓冲区，用于存放sql语句的执行结果  </p>
+</li>
+<li><p>存储过程</p>
+<p>在数据库系统中，一组为完成特定功能的SQL语句集，存储在数据库中，经过第一次编译后调用时不需要再次编译，用户通过指定存储过程的名字并给出参数来执行存储过程</p>
+</li>
+</ul>
+<h2 id="数据库完整性约束"><a href="#数据库完整性约束" class="headerlink" title="数据库完整性约束"></a>数据库完整性约束</h2><hr>
+<ul>
+<li><p>实体完整性约束</p>
+<p>若属性A是基本关系R的主属性，则A不能取空值</p>
+</li>
+<li><p>参照完整性</p>
+<p>若属性或属性组F是基本关系R的外码，它与基本关系S的主码Ks相对应，则对于R中的每个元组在F上的值必须是空值或者等于S中某个元组的主码值</p>
+</li>
+<li><p>用户自定义完整性</p>
+<p>满足用户对数据之间特定的约束条件</p>
+</li>
+</ul>
+<h2 id="数据库编程及其连接方式"><a href="#数据库编程及其连接方式" class="headerlink" title="数据库编程及其连接方式"></a>数据库编程及其连接方式</h2><hr>
+<p> JAVA中使用中间件JDBC（一种执行SQL语句的JAVA API）连接编程语言和数据库，其由一组用JAVA语言编写的类和接口组成，可为多种数据库提供统一访问</p>
+<p> 使用JDBC操作数据库的步骤是</p>
+<ul>
+<li>与数据库建立连接</li>
+<li>向数据库发送SQL语句，需要java.sql的支持</li>
+<li>处理sql语句的返回结果</li>
+</ul>
+<h1 id="基于复用的软件构造"><a href="#基于复用的软件构造" class="headerlink" title="基于复用的软件构造"></a>基于复用的软件构造</h1><hr>
+<ul>
+<li><p>软件复用概念</p>
+<p>在两次或多次不同的软件开发过程中重复使用相同或相近的软件模块的过程</p>
+</li>
+<li><p>可复用件类型</p>
+<ul>
+<li><p>通用构件</p>
+<p>在程序设计语言的基础上提供通用的支持,如JAVA中的math包</p>
+</li>
+<li><p>特殊领域构件</p>
+<p>完成软件产品应用领域的特殊功能，如图像处理、图像压缩、图像分析</p>
+</li>
+<li><p>特殊应用代码</p>
+<p>只服务于当前开发的应用程序</p>
+</li>
+</ul>
+</li>
+<li><p>软件复用主要问题</p>
+<ul>
+<li><p>必须有可复用对象</p>
+</li>
+<li><p>所复用对象必须是有用的</p>
+</li>
+<li><p>复用者需要知道如何使用被复用的对象</p>
+</li>
+</ul>
+</li>
+<li><p>软件复用基本类型</p>
+<ul>
+<li><p>产品复用 </p>
+<p>复用已有的软构件，通过构件集成得到新系统</p>
+</li>
+<li><p>过程复用</p>
+<p>复用已有的软件开发过程，使用可复用的应用生成器来自动或半自动地生成所需系统</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>设计模式</p>
+<ul>
+<li><p>基本概念</p>
+<p>对给定环境下反复出现地问题一个通用的、可复用地方案</p>
+</li>
+<li><p>考虑因素</p>
+<p> 模式名称、解决问题、设计元素及其之间的交互</p>
+</li>
+</ul>
+</li>
+<li><p>框架</p>
+<ul>
+<li>基本概念</li>
+</ul>
+<p>模式本身可能不足以开发一个完整的设计。在某些情况下，还需要为设计工作提供与实现相关的架构基础设施</p>
+<ul>
+<li><p>设计模式和框架的区别 </p>
+<ul>
+<li><p>设计模式</p>
+<p>设计复用，对在某种环境中反复出现问题及解决方案的描述，适用于各个领域，比框架抽象</p>
+</li>
+<li><p>框架</p>
+<p>部分代码复用，部分设计复用，一个框架往往含有一个或多个设计模式，针对某一特定领域</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
@@ -663,7 +1037,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导言"><span class="nav-number">1.</span> <span class="nav-text">导言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念理解"><span class="nav-number">1.1.</span> <span class="nav-text">概念理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件开发过程的类型"><span class="nav-number">1.2.</span> <span class="nav-text">软件开发过程的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序设计和软件开发"><span class="nav-number">1.3.</span> <span class="nav-text">程序设计和软件开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件构造活动的前提"><span class="nav-number">1.4.</span> <span class="nav-text">软件构造活动的前提</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术理解"><span class="nav-number">1.5.</span> <span class="nav-text">技术理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块化软件构造"><span class="nav-number">2.</span> <span class="nav-text">模块化软件构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念理解-1"><span class="nav-number">2.1.</span> <span class="nav-text">概念理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化"><span class="nav-number">2.2.</span> <span class="nav-text">模块化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象的软件构造"><span class="nav-number">3.</span> <span class="nav-text">面向对象的软件构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念解释"><span class="nav-number">3.1.</span> <span class="nav-text">概念解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件测试和软件调试"><span class="nav-number">3.2.</span> <span class="nav-text">软件测试和软件调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象的5个基本原则"><span class="nav-number">3.3.</span> <span class="nav-text">面向对象的5个基本原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JUnit"><span class="nav-number">3.4.</span> <span class="nav-text">JUnit</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导言"><span class="nav-number">1.</span> <span class="nav-text">导言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念理解"><span class="nav-number">1.1.</span> <span class="nav-text">概念理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件开发过程的类型"><span class="nav-number">1.2.</span> <span class="nav-text">软件开发过程的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序设计和软件开发"><span class="nav-number">1.3.</span> <span class="nav-text">程序设计和软件开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件构造活动的前提"><span class="nav-number">1.4.</span> <span class="nav-text">软件构造活动的前提</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术理解"><span class="nav-number">1.5.</span> <span class="nav-text">技术理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块化软件构造"><span class="nav-number">2.</span> <span class="nav-text">模块化软件构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念理解-1"><span class="nav-number">2.1.</span> <span class="nav-text">概念理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化"><span class="nav-number">2.2.</span> <span class="nav-text">模块化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象的软件构造"><span class="nav-number">3.</span> <span class="nav-text">面向对象的软件构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念解释"><span class="nav-number">3.1.</span> <span class="nav-text">概念解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件测试和软件调试"><span class="nav-number">3.2.</span> <span class="nav-text">软件测试和软件调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象的5个基本原则"><span class="nav-number">3.3.</span> <span class="nav-text">面向对象的5个基本原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JUnit"><span class="nav-number">3.4.</span> <span class="nav-text">JUnit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据处理的软件构造"><span class="nav-number">4.</span> <span class="nav-text">数据处理的软件构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念解释-1"><span class="nav-number">4.1.</span> <span class="nav-text">概念解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防御性编程"><span class="nav-number">4.2.</span> <span class="nav-text">防御性编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表驱动编程"><span class="nav-number">4.3.</span> <span class="nav-text">表驱动编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户交互的软件构造"><span class="nav-number">5.</span> <span class="nav-text">用户交互的软件构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">5.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互设计的8条黄金规则"><span class="nav-number">5.2.</span> <span class="nav-text">交互设计的8条黄金规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态测试"><span class="nav-number">5.3.</span> <span class="nav-text">静态测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于模型的测试"><span class="nav-number">5.4.</span> <span class="nav-text">基于模型的测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码重构和交付"><span class="nav-number">6.</span> <span class="nav-text">代码重构和交付</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GUI软件构造"><span class="nav-number">7.</span> <span class="nav-text">GUI软件构造</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用数据库"><span class="nav-number">8.</span> <span class="nav-text">应用数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念-1"><span class="nav-number">8.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库完整性约束"><span class="nav-number">8.2.</span> <span class="nav-text">数据库完整性约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库编程及其连接方式"><span class="nav-number">8.3.</span> <span class="nav-text">数据库编程及其连接方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于复用的软件构造"><span class="nav-number">9.</span> <span class="nav-text">基于复用的软件构造</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -677,7 +1051,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/deng123-dev.github.io/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
